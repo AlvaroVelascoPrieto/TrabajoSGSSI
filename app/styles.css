@@ -1,0 +1,190 @@
+/*###########DEFAULTS###########*/
+
+nav, 
+header, 
+footer{
+    display: block;
+}
+
+body{
+    line-height: 1;
+    margin: 0;
+    font-family: 'Raleway';
+}
+
+h1, h2, h3, label{
+    font-family: 'Roboto';
+}
+
+.container{
+    width: 100%;
+    display: grid;
+    grid-auto-flow: dense;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(30rem,1fr));
+}
+
+footer{
+    background-color: grey;
+}
+
+footer div.container div{
+    margin: 25px;
+    text-align: center;
+}
+
+footer ul{
+    list-style: none;
+    text-align: left;
+    padding-left: 0;
+    text-align: center;
+}
+
+
+footer ul li{
+    line-height: 25px;
+}
+
+/*##########NAV BAR############*/
+
+nav{
+    width: 100%;
+    margin: 0;
+}
+
+nav ul{
+    background-color:lightgray;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+ul.topnav li{
+    list-style: none;
+    float: left;
+}
+
+ul.topnav li.topnav-right{
+    float: right;
+}
+
+ul.topnav li a{
+    display: block;
+    text-decoration: none;
+    min-height: 16px;
+    text-align: center;
+    padding: 14px;
+    text-transform: uppercase;
+    color: black;
+}
+
+ul.topnav li a:hover{
+    background-color: dimgrey;
+    color: white;
+}
+
+ul.topnav li.dropdownicon{
+    display: none;
+}
+
+/*##########BODY################*/
+div.logincontainer{
+    padding-left: 25%;
+    background-color: #e70000;
+}
+
+div.logincontainer h1{
+    color: white;
+    font-size: 38px;
+}
+
+div.logincontainer h2{
+    color: whitesmoke;
+}
+
+input{
+    min-height: 25px;
+    min-width: 250px;
+    font-size: 15px;
+}
+
+button.submitbutton{
+    min-height: 20px;
+    min-width: 100px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: white;
+    background-color: grey;
+}
+
+div.videocontainer{
+    text-align: center;
+    padding: 2%;
+    background-color: #e70000;
+}
+
+h1.galerytitle{
+    font-size: 45px;
+    text-align: center;
+}
+
+div.box{
+    background-color: white;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.35),
+        0 2px 3px 0 rgba(0,0,0,0.2);
+    border-radius: 6px;
+    margin: 15px;
+    padding: 15px;
+    text-align: center;
+    
+}
+
+img.alpinelogo{
+    max-height: 100px;
+    width: 100px;
+}
+
+label{
+    font-size: 35px;
+    font-weight: 500;
+}
+
+p{
+    text-align: left;
+    padding: 10px;
+    font-size:17.5px
+}
+
+
+/*###########MOVIL#############*/
+@media screen and (max-width:680px){
+    ul.topnav li:not(:nth-child(1)){
+        display: none;
+    }
+    
+    ul.topnav li.dropdownicon{
+        display: block;
+        float: right;
+    }
+    
+    ul.topnav.responsive li.dropdownicon{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    
+    ul.topnav.responsive{
+        position: relative;
+    }
+    
+    ul.topnav.responsive li{
+        display: inline;
+        float: none;
+    }
+    
+    ul.topnav.responsive li a{
+        display: block;
+        text-align: left;
+    }
+    
+}
