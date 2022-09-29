@@ -1,7 +1,7 @@
 <?php
   echo '<head>
         <title>HyperLAND</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="styles/styles.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Roboto:wght@500&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@ $query = mysqli_query($conn, "SELECT * FROM usuarios")
                 <li><a href='#news'>News</a></li>
                 <li><a href='#contact'>Contact</a></li>
                 <li><a href='#about'>About</a></li>
-                <li class='topnav-right'><a href='#singup'>Sign Up</a></li>
+                <li class='topnav-right'><a href='signUp.php'>Sign Up</a></li>
                 <li class='topnav-right'><a href='#signin'>Sign In</a></li>
                 <li class='dropdownicon' onclick='dropdownMenu()'><a href='script.js:void(0)'>	
 &#9776;</a></li>
