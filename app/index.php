@@ -20,8 +20,13 @@
 
 
 
-$query = mysqli_query($conn, "SELECT * FROM usuarios")
+$query = mysqli_query($conn, "SELECT nombreAp FROM usuarios")
    or die (mysqli_error($conn));
+$query2 = mysqli_query($conn, "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_NAME`='carros';")
+   or die (mysqli_error($conn));
+$query3 = mysqli_query($conn, "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_NAME`='carros';")
+   or die (mysqli_error($conn));
+   
 
 
    echo "<body>
@@ -54,16 +59,54 @@ $query = mysqli_query($conn, "SELECT * FROM usuarios")
             </div>
         </div>
         <h1 class='galerytitle'>Ultimos articulos</h1>
+        <form>
+        <div class='containerSeleccion'>
+            <div class='formSeleccion'>
+                <select name='Dato 1'>
+                
+        ";
+
+
+while ($option = mysqli_fetch_array($query2)) {
+	echo "<option value='{$option['COLUMN_NAME']}'>{$option['COLUMN_NAME']}</option>";
+}
+
+echo "  </select> 
+	</div>  
+	
+	
+	";      
+
+echo "    <div class='formSeleccion'>
+                <select name='Dato 2'>
+                
+        ";
+
+
+while ($option2 = mysqli_fetch_array($query3)) {
+	echo "<option value='{$option2['COLUMN_NAME']}'>{$option2['COLUMN_NAME']}</option>";
+}
+
+echo "  </select> 
+	</div>  
+	
+	";      
+        
+echo"              
+                  <div class='formSeleccion'>
+               <input type='submit' name=crearTablas>
+            </div>    
+        </div>
+        </form>
         <div class='container'>";
 
 while ($row = mysqli_fetch_array($query)) {
- 
   echo "<div class='box'>
                 <div class='icon'>
                     <img class='alpinelogo' src='Alo_logo.png'>
                 </div>
                 <br>
-                <label>{$row['nombre']}</label>
+                <label>{$row['nombreAp']}</label>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.  
                 </p>
             </div>";
