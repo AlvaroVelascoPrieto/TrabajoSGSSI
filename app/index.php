@@ -59,10 +59,10 @@ $query3 = mysqli_query($conn, "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`C
             </div>
         </div>
         <h1 class='galerytitle'>Ultimos articulos</h1>
-        <form>
+        <form action='' method='post'>
         <div class='containerSeleccion'>
             <div class='formSeleccion'>
-                <select name='Dato 1'>
+                <select name='Dato1'>
                 
         ";
 
@@ -78,7 +78,7 @@ echo "  </select>
 	";      
 
 echo "    <div class='formSeleccion'>
-                <select name='Dato 2'>
+                <select name='Dato2'>
                 
         ";
 
@@ -94,25 +94,33 @@ echo "  </select>
         
 echo"              
                   <div class='formSeleccion'>
-               <input type='submit' name=crearTablas>
+               <input type='submit' name='Buscar'>
             </div>    
         </div>
         </form>
         <div class='container'>";
 
-while ($row = mysqli_fetch_array($query)) {
-  echo "<div class='box'>
+if(isset($_POST['Dato1']) && isset($_POST['Dato2']) && isset($_POST['Buscar'])){
+    $dato1= $_POST['Dato1'];
+    $dato2= $_POST['Dato2'];
+    $query =mysqli_query($conn, "SELECT {$dato1}, {$dato2} FROM carros;")
+   or die (mysqli_error($conn));
+   while($row = mysqli_fetch_array($query)){
+  	echo "<div class='box'>
                 <div class='icon'>
                     <img class='alpinelogo' src='Alo_logo.png'>
                 </div>
                 <br>
-                <label>{$row['nombreAp']}</label>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.  
-                </p>
+                <h2 class='galeria'>$dato1:</h2>
+                <p class='galeria'>{$row[0]}</p>
+                <h2 class='galeria'>$dato2:</h2>
+                <p class='galeria'>{$row[1]}</p>
             </div>";
-   
-             
+      
+	}
+    
 }
+
                      
 echo "</div>
         <br>
