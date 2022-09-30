@@ -25,7 +25,7 @@ h1, h2, h3, label{
 }
 
 footer{
-    background-color: grey;
+    background-color: gray;
 }
 
 footer div.container div{
@@ -100,6 +100,16 @@ div.logincontainer h1{
 
 div.logincontainer h2{
     color: whitesmoke;
+}
+
+div.containerSeleccion {
+  text-align: center;
+}
+
+div.formSeleccion {
+  display: inline-block;
+  padding: 1rem 1rem;
+  vertical-align: middle;
 }
 
 input{
