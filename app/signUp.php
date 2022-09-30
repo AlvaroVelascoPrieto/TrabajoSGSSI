@@ -1,41 +1,41 @@
 <?php
-  echo "  
+echo "  
 <head>
-        <title>HyperLAND-SignUp</title>
-        <link rel='stylesheet' href='styles/stylesSignUp.cs'>
-        
-    </head>
-    <body class='bg'>
-        <script>
-            function comprobar() {
-                
-                var nombreAp = document.getElementById('NombreAp').value;
-                var DNI = document.getElementById('DNI').value;
-                var telf = document.getElementById('telefono').value;
-                var fechaN = document.getElementById('fechaN').value;
-                var email = document.getElementById('email').value;
-                document.getElementById('placeholder').innerHTML = nombreAp;
+    <title>HyperLAND-SignUp</title>
+    <link rel='stylesheet' href='styles/stylesSignUp.css'>
 
-            }
-        </script>
-            <div class='boxCentrado'>
-                <form name=Sign Up>
-                    <h1>Sign Up</h1>
-                    <h2>Nombre y Apellidos</h2>
-                            <input class='usernameinput' id='NombreAp' placeholder='Pedro Martinez De La Rosa' required>
-                    <h2>DNI</h2>
-                            <input class='passwordinput' id='DNI' type='password' placeholder='11111111X' required>
-                    <h2>Telefono</h2>
-                            <input class='passwordinput' id='telefono' type='password' placeholder='Numero 9 digitos' required>
-                     <h2>Fecha de nacimiento</h2>
-                            <input class='passwordinput' id='fechaN' type='date' placeholder='Numero 9 digitos'>
-                    <h2>E-Mail</h2>
-                            <input class='passwordinput' id='email' type='text' placeholder='E-Mail' required>
-                    <p id=placeholder>123</p>
-                    <br>
-                    <br>
-                    <input type='button' value='Registrar' onclick='comprobar()'>                </form>
-            </div>
-        
-</body>";
+</head>
+    <body class='bg'>
+        <div class='boxCentrado'>
+            <script defer src='comprobar.js'></script>
+
+            <form id='SignUp'>
+                <h1>Sign Up</h1>
+                <h2>Nombre y Apellidos</h2>
+                        <input class='usernameinput' id='NombreAp' name='NombreAp' placeholder='Pedro Martinez De La Rosa' align='center' required>
+                        <br>
+                        <label for='NombreAp' id='NombreApError' class='error'></label>
+                <h2>DNI</h2>
+                        <input name='DNI' id='DNI' placeholder='11111111-X' required>
+                        <br>
+                        <label for='DNI'id ='DNIerror' class='error'></label>
+                <h2>Teléfono</h2>
+                        <input name='telefono' id='telefono' placeholder='(+34) 678 901 234' required>
+                        <br>
+                        <label for='telefono' id ='telfError' class='error'></label>
+                <h2>Fecha de nacimiento</h2>
+                        <input name='fechaN' id='fechaN' type='date' required>
+                        <br>
+                        <label for=''id =''></label>
+                <h2>E-Mail</h2>
+                        <input name='email' id='email' type='text' placeholder='ejemplo@servidor.extension' required>
+                        <br>
+                        <label for='email' id ='emailError' class='error'></label>
+                <br>
+                <br>
+                <button type='submit'>Registrar</button>
+            </form>
+        </div>      
+    </body>
+    ";
 ?>

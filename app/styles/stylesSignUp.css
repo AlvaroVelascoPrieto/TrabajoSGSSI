@@ -13,3 +13,8 @@ div.boxCentrado{
 body.bg{
     background-color: firebrick;
 }
+
+.error{
+    color: red;
+    font-size: 12;
+}
