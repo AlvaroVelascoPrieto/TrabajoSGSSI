@@ -1,4 +1,9 @@
 <?php
+  if(isset($_POST['EditarDatos'])){
+	header("Location:ModificarTablas.php");
+	exit;
+  }
+
   echo '<head>
         <title>HyperLAND</title>
         <link rel="stylesheet" href="styles/styles.css">
@@ -58,9 +63,12 @@ $query3 = mysqli_query($conn, "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`C
                 <iframe width='560' height='315' src='https://www.youtube.com/embed/kpHJxA-wnXg' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
             </div>
         </div>
-        <h1 class='galerytitle'>Ultimos articulos</h1>
+        <h1 class='galerytitle'>MONOPLAZAS</h1>
         <form action='' method='post'>
         <div class='containerSeleccion'>
+            <div class='formSeleccion'>
+            	<h2>Selecciona 2 datos a visualizar:</h2>
+            </div>	
             <div class='formSeleccion'>
                 <select name='Dato1'>
                 
@@ -93,9 +101,12 @@ echo "  </select>
 	";      
         
 echo"              
-                  <div class='formSeleccion'>
-               <input type='submit' name='Buscar'>
-            </div>    
+                <div class='formSeleccion'>
+               	<input type='submit' name='Buscar' value ='Buscar'>
+            	</div>  
+               <div class='formSeleccion'>
+               	 <input type='submit' name='EditarDatos' value ='Editar Datos' class='EditarDatos'>
+               </div>
         </div>
         </form>
         <div class='container'>";

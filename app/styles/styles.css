@@ -114,8 +114,12 @@ div.formSeleccion {
 
 input{
     min-height: 25px;
-    min-width: 250px;
+    min-width: 200px;
     font-size: 15px;
+}
+input.EditarDatos{
+	background-color: dimgray;
+    	color: white;
 }
 
 button.submitbutton{
