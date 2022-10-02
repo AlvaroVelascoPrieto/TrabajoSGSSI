@@ -6,21 +6,22 @@ echo "
 
 </head>
     <body class='bg'>
-        <div class='boxCentrado'>
+        <img src='images/AloBG.jpg' style='max-width: 100%; height: auto;'>
+        <div class='boxCentradoSobreImagen'>
             <script defer src='comprobar.js'></script>
 
-            <form id='SignUp'>
+            <form id='SignUp' action='signUpPost.php' method='post'>
                 <h1>Sign Up</h1>
                 <h2>Nombre y Apellidos</h2>
                         <input class='usernameinput' id='NombreAp' name='NombreAp' placeholder='Pedro Martinez De La Rosa' align='center' required>
                         <br>
                         <label for='NombreAp' id='NombreApError' class='error'></label>
                 <h2>DNI</h2>
-                        <input name='DNI' id='DNI' placeholder='11111111-X' required>
+                        <input name='DNI' id='DNI' placeholder='11111111X' required>
                         <br>
                         <label for='DNI'id ='DNIerror' class='error'></label>
                 <h2>Teléfono</h2>
-                        <input name='telefono' id='telefono' placeholder='(+34) 678 901 234' required>
+                        <input name='telefono' id='telefono' placeholder='(+34) 678901234' required>
                         <br>
                         <label for='telefono' id ='telfError' class='error'></label>
                 <h2>Fecha de nacimiento</h2>
@@ -35,7 +36,7 @@ echo "
                 <br>
                 <button type='submit'>Registrar</button>
             </form>
-        </div>      
+        </div> 
     </body>
-    ";
+";
 ?>
