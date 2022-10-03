@@ -1,4 +1,30 @@
 <?php
+
+// phpinfo();
+$hostname = "db";
+$username = "admin";
+$password = "test";
+$db = "database";
+
+
+$conn = mysqli_connect($hostname,$username,$password,$db);
+if ($conn->connect_error) {
+    die("Database connection failed: " . $conn->connect_error);
+}
+
+if(isset($_POST['Registrar'])) {
+    $query = mysqli_query($conn, "INSERT INTO 
+    usuarios(nombreAp, DNI, telf, fechaN, email)
+    VALUES('$_POST[NombreAp]', 
+        '$_POST[DNI]', 
+        '$_POST[telefono]', 
+        '$_POST[fechaN]', 
+        '$_POST[email]')")
+    or die (mysqli_error($conn));
+    header("Location:signUpPost.php");
+    exit;
+  }
+
 echo "  
 <head>
     <title>HyperLAND-SignUp</title>
@@ -8,9 +34,9 @@ echo "
     <body class='bg'>
         <img src='images/AloBG.jpg' style='max-width: 100%; height: auto;'>
         <div class='boxCentradoSobreImagen'>
-            <script defer src='comprobar.js'></script>
+            <script defer src='scripts/comprobar.js'></script>
 
-            <form id='SignUp' action='signUpPost.php' method='post'>
+            <form id='SignUp' method='post'>
                 <h1>Sign Up</h1>
                 <h2>Nombre y Apellidos</h2>
                         <input class='usernameinput' id='NombreAp' name='NombreAp' placeholder='Pedro Martinez De La Rosa' align='center' required>
@@ -34,9 +60,11 @@ echo "
                         <label for='email' id ='emailError' class='error'></label>
                 <br>
                 <br>
-                <button type='submit'>Registrar</button>
+                <input type='submit' name='Registrar' value='registrar'/>
             </form>
         </div> 
     </body>
 ";
+
+
 ?>
