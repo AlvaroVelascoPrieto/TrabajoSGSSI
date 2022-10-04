@@ -42,7 +42,7 @@ $query3 = mysqli_query($conn, "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`C
                 <li><a href='#contact'>Contact</a></li>
                 <li><a href='#about'>About</a></li>
                 <li class='topnav-right'><a href='signUp.php'>Sign Up</a></li>
-                <li class='topnav-right'><a href='#signin'>Sign In</a></li>
+                <li class='topnav-right'><a href='signIn.php'>Sign In</a></li>
                 <li class='dropdownicon' onclick='dropdownMenu()'><a href='script.js:void(0)'>	
 &#9776;</a></li>
             </ul>
