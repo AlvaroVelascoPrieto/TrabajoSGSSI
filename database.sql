@@ -28,6 +28,7 @@ CREATE TABLE `carros` (
   `poles` int(11) DEFAULT NULL,
   `piloto1` varchar(25) DEFAULT NULL,
   `anno` int(11) DEFAULT NULL,
+  `foto` varchar(120) DEFAULT NULL,
   PRIMARY KEY (`marcaModelo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
