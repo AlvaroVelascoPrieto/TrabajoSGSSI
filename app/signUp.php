@@ -21,7 +21,7 @@ if(isset($_POST['Registrar'])) {
         '$_POST[fechaN]', 
         '$_POST[email]')")
     or die (mysqli_error($conn));
-    header("Location:signUpPost.php");
+    header("Location:index.php");
     exit;
   }
 
@@ -58,9 +58,17 @@ echo "
                         <input name='email' id='email' type='text' placeholder='ejemplo@servidor.extension' required>
                         <br>
                         <label for='email' id ='emailError' class='error'></label>
+                <h2>Contraseña</h2>
+                        <input type='password' placeholder='Mínimo 8 caracteres' id='pw' name='pw' required>
+                        <br>
+                        <br>
+                        <input type='password' placeholder='Repita la contraseña' id='pw2' name='pw2' required>
+                <br>
+                <label  for='pw2' id='error' class='error'></label>
                 <br>
                 <br>
-                <input type='submit' name='Registrar' value='registrar'/>
+                <br>
+                <input type='submit' class='tag' name='Registrar' value='Registrar'/>
             </form>
         </div> 
     </body>
@@ -68,3 +76,4 @@ echo "
 
 
 ?>
+
