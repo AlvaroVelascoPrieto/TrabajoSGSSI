@@ -7,7 +7,11 @@ var telfError = document.getElementById('telfError')
 var fechaN = document.getElementById('fechaN')
 var email = document.getElementById('email')
 var emailError = document.getElementById('emailError')
+var password = document.getElementById('pw')
+var password2 = document.getElementById('pw2')
+var passwordError = document.getElementById('pwError')
 var form = document.getElementById('SignUp')
+var errores = document.getElementById('errores')
 
 form.addEventListener('submit', (e) => {
     
@@ -26,10 +30,18 @@ form.addEventListener('submit', (e) => {
         emailError.innerText = "Por favor, introduzca un e-mail válido"
     }
 
+    
     aux = telf.value
     if (aux < 600000000 || aux > 999999999) {
         e.preventDefault()
         telfError.innerText = "Por favor, introduzca un número de teléfono válido"
+    }
+
+    var pass1 = pw.value
+    var pass2 = pw2.value
+    if (!(pass1 === pass2)) {
+        e.preventDefault()
+        passwordError.innerText = "Las contraseñas no coinciden"
     }
 
     var dni = DNI.value
@@ -54,6 +66,9 @@ form.addEventListener('submit', (e) => {
             e.preventDefault()
             DNIerror.innerText = 'Dni erroneo, formato no válido'
         }
+
+    
+    
 
     
 
