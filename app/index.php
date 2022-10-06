@@ -155,7 +155,7 @@ echo "</div>
                     </ul>
                 </div>
                 <div>
-                    <h2>Products</h2>
+                    <h2>Product</h2>
                     <ul class='products'>
                         <li>About</li>
                         <li>Blogs</li>
