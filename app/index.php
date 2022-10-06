@@ -139,7 +139,7 @@ echo "</div>
         <footer>
             <div class='container'>
                 <div>
-                    <h2>Company</h2>
+                    <h2>Companyy</h2>
                     <ul class='company'>
                         <li>About</li>
                         <li>Blogs</li>
