@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `carros`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `carros` (
-  `marcaModelo` varchar(30) NOT NULL,
-  `victorias` int(11) DEFAULT NULL,
-  `poles` int(11) DEFAULT NULL,
-  `piloto1` varchar(25) DEFAULT NULL,
-  `anno` int(11) DEFAULT NULL,
+  `Modelo` varchar(30) NOT NULL,
+  `Victorias` int(11) DEFAULT NULL,
+  `Pole_positions` int(11) DEFAULT NULL,
+  `Primer_piloto` varchar(25) DEFAULT NULL,
+  `Anno` int(11) DEFAULT NULL,
   `foto` varchar(120) DEFAULT NULL,
-  PRIMARY KEY (`marcaModelo`)
+  PRIMARY KEY (`Modelo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -39,7 +39,7 @@ CREATE TABLE `carros` (
 
 LOCK TABLES `carros` WRITE;
 /*!40000 ALTER TABLE `carros` DISABLE KEYS */;
-INSERT INTO `carros` VALUES ('Ferrari F2004',15,12,'Michael Schumacher',2004),('HRT F112',0,0,'Pedro Martinez De La Rosa',2012),('McLaren MP4/22',8,8,'Fernando Alonso',2007),('Mercedes-AMG W11 EQ Performanc',12,15,'Lewis Hamilton',2020),('RedBull RB16B',13,11,'Max  Verstappen',2021),('RedBull RB9',13,11,'Sebastian Vettel',2013),('Renault R25',8,7,'Fernando Alonso',2005),('Renault R26',8,7,'Fernando Alonso',2006);
+INSERT INTO `carros` VALUES ('Ferrari F2004',15,12,'Michael Schumacher',2004, 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Ferrari_f2004.jpg/2560px-Ferrari_f2004.jpg'),('HRT F112',0,0,'Pedro Martinez De La Rosa',2012, 'https://upload.wikimedia.org/wikipedia/commons/0/08/Narain_Karthikeyan_2012_Malaysia_Qualify.jpg'),('McLaren MP4/22',8,8,'Fernando Alonso',2007, 'https://upload.wikimedia.org/wikipedia/commons/1/1d/Fernando_Alonso_2007_2.jpg'),('Mercedes-AMG W11 EQPerformance',12,15,'Lewis Hamilton',2020, 'https://upload.wikimedia.org/wikipedia/commons/3/31/Lewis_Hamilton_2020_Tuscan_Grand_Prix_-_race_day_%28cropped%29.jpg'),('RedBull RB16B',13,11,'Max  Verstappen',2021, 'https://upload.wikimedia.org/wikipedia/commons/f/fa/FIA_F1_Austria_2021_Nr._33_Verstappen_%28side%29.jpg'),('RedBull RB9',13,11,'Sebastian Vettel',2013, 'https://upload.wikimedia.org/wikipedia/commons/0/02/Sebastian_Vettel_2013_Malaysia_FP1.jpg'),('Renault R25',8,7,'Fernando Alonso',2005, 'https://upload.wikimedia.org/wikipedia/commons/b/be/Alonso_%28Renault%29_qualifying_at_USGP_2005.jpg'),('Renault R26',8,7,'Fernando Alonso',2006, 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Fernando_Alonso_2006_Canada.jpg');
 /*!40000 ALTER TABLE `carros` ENABLE KEYS */;
 UNLOCK TABLES;
 
