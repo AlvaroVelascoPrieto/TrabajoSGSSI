@@ -104,12 +104,15 @@ if(isset($_POST['Dato1']) && isset($_POST['Dato2']) && isset($_POST['Buscar'])){
    while($row = mysqli_fetch_array($query)){
   	echo "
         <div class='box'>
-                
+            <div class='columna'>
                 <img class='imagenCarro' src='{$row[2]}'>
+            </div>
+            <div class='columna'>
                 <h2 class='galeria'>$dato1:</h2>
                 <p class='galeria'>{$row[0]}</p>
                 <h2 class='galeria'>$dato2:</h2>
                 <p class='galeria'>{$row[1]}</p>
+            </div>
         </div>";
       
 	}

@@ -18,8 +18,7 @@ h1, h2, h3, label,p{
 
 /* En container se define la página entera (es el box la tarjeta en la que se displayea la infor, si está el container al 30% significa que solo llenará el 30% de la página. Hay que hacer que el container user la página entera y que dentro del box sea 30% la foto y el resto la información)  */
 .container{ 
-    width: 30%;
-    display: grid;
+    width: 100%;
     grid-auto-flow: dense;
     grid-auto-rows: auto;
     grid-template-columns: repeat(auto-fit, minmax(20rem,1fr));
@@ -37,6 +36,20 @@ div.box{
 div.box:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
+
+div.box:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.columna {
+    float: left;
+    width: 50%;
+    align-content: left;
+    align-items: left;
+}
+
 
 footer{
     background-color: gray;
@@ -180,7 +193,7 @@ body.bg{
 }
 
 img.imagenCarro{
-  max-width: 100%;
+  max-width: 50%;
 }
 
 label{
