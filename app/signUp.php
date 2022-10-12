@@ -1,5 +1,9 @@
 <?php
 
+session_start();
+echo session_id();
+echo $_SESSION['user'];
+
 // phpinfo(); se podría incluir en otro archivo php e importarlo para todas las páginas
 $hostname = "db";
 $username = "admin";
@@ -14,6 +18,9 @@ if ($conn->connect_error) {
 
 if(isset($_POST['Registrar'])) {
 
+    $user = $_POST['email'];
+    $pass = $_POST['pw'];
+ 
     $emailQuery = mysqli_query($conn, "SELECT * FROM `usuarios` WHERE email = '$_POST[email]'")
     or die (mysqli_error($conn));
     if (mysqli_num_rows($emailQuery) > 0) {
@@ -28,11 +35,14 @@ if(isset($_POST['Registrar'])) {
         '$_POST[DNI]', 
         '$_POST[telefono]', 
         '$_POST[fechaN]', 
-        '$_POST[email]',
-        '$_POST[pw]')")
+        '$user',
+        '$pass')")
     or die (mysqli_error($conn));
     header("Location:index.php");
     exit;
+
+    $_SESSION['user'] = $user;
+    $_SESSION['pass'] = $pass;
     }
 }
 
