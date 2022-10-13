@@ -1,8 +1,6 @@
 <?php
 
 session_start();
-echo session_id();
-echo $_SESSION['user'];
 
 // phpinfo(); se podría incluir en otro archivo php e importarlo para todas las páginas
 $hostname = "db";
@@ -29,6 +27,9 @@ if(isset($_POST['Registrar'])) {
 
     }else{
 
+    $_SESSION['user'] = $user;
+    $_SESSION['pass'] = $pass;
+
     $query = mysqli_query($conn, "INSERT INTO 
     usuarios(nombreAp, DNI, telf, fechaN, email, pass)
     VALUES('$_POST[NombreAp]', 
@@ -41,8 +42,7 @@ if(isset($_POST['Registrar'])) {
     header("Location:index.php");
     exit;
 
-    $_SESSION['user'] = $user;
-    $_SESSION['pass'] = $pass;
+    
     }
 }
 

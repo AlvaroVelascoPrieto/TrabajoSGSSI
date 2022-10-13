@@ -1,16 +1,25 @@
 <?php
+
+session_start();    
+
+
   if(isset($_POST['EditarDatos'])){
     header("Location:ModificarTablas.php");
     exit;
   }
+  if(isset($_GET['action']) and $_GET['action'] == 'Log out') {
+    session_destroy();
+  }
 
-  echo '<head>
+    
+    echo '<head>
         <title>HyperLAND</title>
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Roboto:wght@500&display=swap" rel="stylesheet">
     </head>';
+    
     
   // phpinfo();
   $hostname = "db";
@@ -33,20 +42,39 @@ $query3 = mysqli_query($conn, "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`C
    or die (mysqli_error($conn));
    
 
-
-   echo "<body>
+if(!isset($_SESSION['user']) and !isset($_SESSION['pw'])) {
+    echo "<body>
         <nav>
-            <ul class='topnav' id='dropdownClick'>
-                <li><a href='#home'>Home</a></li>
-                <li><a href='#news'>News</a></li>
-                <li><a href='#contact'>Contact</a></li>
-                <li><a href='#about'>About</a></li>
-                <li class='topnav-right'><a href='signUp.php'>Sign Up</a></li>
-                <li class='topnav-right'><a href='signIn.php'>Sign In</a></li>
-                <li class='dropdownicon' onclick='dropdownMenu()'><a href='script.js:void(0)'>  
-&#9776;</a></li>
-            </ul>
-        </nav>
+        <ul class='topnav' id='dropdownClick'>
+        <li><a href='#home'>Home</a></li>
+        <li><a href='#news'>News</a></li>
+        <li><a href='#contact'>Contact</a></li>
+        <li><a href='#about'>About</a></li>
+        <li class='topnav-right'><a href='signUp.php'>Sign Up</a></li>
+        <li class='topnav-right'><a href='signIn.php'>Sign In</a></li>
+        <li class='dropdownicon' onclick='dropdownMenu()'><a href='script.js:void(0)'>  
+        &#9776;</a></li>
+        </ul>
+        </nav>";
+    }else{
+    echo "<body>
+        <nav>
+        <ul class='topnav' id='dropdownClick'>
+        <li><a href='#home'>Home</a></li>
+        <li><a href='#news'>News</a></li>
+        <li><a href='#contact'>Contact</a></li>
+        <li><a href='#about'>About</a></li>
+        <li class='topnav-right'><a href='logout.php'>Log out</a></li>
+        <li class='topnav-right'><a href='ModificarDatosUsuario.php'>Editar Datos</a></li>
+        <li class='dropdownicon' onclick='dropdownMenu()'><a href='script.js:void(0)'>  
+        &#9776;</a></li>
+        </ul>
+        </nav>";
+
+        }
+
+
+    echo "
         
         <h1 class='galerytitle'>MONOPLAZAS</h1>
         <form action='' method='post'>

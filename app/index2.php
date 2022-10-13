@@ -2,7 +2,7 @@
 
 session_start();
 
-echo session_id();
+
   if(isset($_POST['EditarDatos'])){
 	header("Location:ModificarTablas.php");
 	exit;

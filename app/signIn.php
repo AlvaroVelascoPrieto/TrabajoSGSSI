@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // phpinfo();
 $hostname = "db";
 $username = "admin";
@@ -18,6 +20,9 @@ if(isset($_POST['IniciarSesion'])) {
     or die (mysqli_error($conn));
     $contra = mysqli_fetch_array($query);
     if(strcmp($contra[0],$_POST['password'])==0){
+        $_SESSION['user'] = $dato1;
+        $_SESSION['pw'] = $_POST['password'];
+
     	header("Location:index.php");
     	exit;
     }
