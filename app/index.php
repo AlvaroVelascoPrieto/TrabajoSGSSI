@@ -1,14 +1,11 @@
 <?php
 
 session_start();    
-
+echo $_SESSION['prueba'];
 
   if(isset($_POST['EditarDatos'])){
     header("Location:ModificarTablas.php");
     exit;
-  }
-  if(isset($_GET['action']) and $_GET['action'] == 'Log out') {
-    session_destroy();
   }
 
     

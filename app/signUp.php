@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+$_SESSION['prueba'] = "prueba";
 
 // phpinfo(); se podría incluir en otro archivo php e importarlo para todas las páginas
 $hostname = "db";
@@ -19,7 +20,7 @@ if(isset($_POST['Registrar'])) {
     $user = $_POST['email'];
     $pass = $_POST['pw'];
  
-    $emailQuery = mysqli_query($conn, "SELECT * FROM `usuarios` WHERE email = '$_POST[email]'")
+    $emailQuery = mysqli_query($conn, "SELECT * FROM `usuarios` WHERE email = '$_	POST[email]'")
     or die (mysqli_error($conn));
     if (mysqli_num_rows($emailQuery) > 0) {
 
@@ -29,6 +30,7 @@ if(isset($_POST['Registrar'])) {
 
     $_SESSION['user'] = $user;
     $_SESSION['pass'] = $pass;
+    
 
     $query = mysqli_query($conn, "INSERT INTO 
     usuarios(nombreAp, DNI, telf, fechaN, email, pass)
