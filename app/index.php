@@ -43,10 +43,9 @@ if(!isset($_SESSION['user']) and !isset($_SESSION['pw'])) {
     echo "<body>
         <nav>
         <ul class='topnav' id='dropdownClick'>
-        <li><a href='#home'>Home</a></li>
-        <li><a href='#news'>News</a></li>
-        <li><a href='#contact'>Contact</a></li>
-        <li><a href='#about'>About</a></li>
+        <li><a href='#Top'>Home</a></li>
+        <li><a href='https://github.com/AlbertoArostegui/TrabajoSGSSI'>About Us</a></li>
+        <li><a href='#Tablas'>Monoplazas</a></li>
         <li class='topnav-right'><a href='signUp.php'>Sign Up</a></li>
         <li class='topnav-right'><a href='signIn.php'>Sign In</a></li>
         <li class='dropdownicon' onclick='dropdownMenu()'><a href='script.js:void(0)'>  
@@ -57,10 +56,9 @@ if(!isset($_SESSION['user']) and !isset($_SESSION['pw'])) {
     echo "<body>
         <nav>
         <ul class='topnav' id='dropdownClick'>
-        <li><a href='#home'>Home</a></li>
-        <li><a href='#news'>News</a></li>
-        <li><a href='#contact'>Contact</a></li>
-        <li><a href='#about'>About</a></li>
+        <li><a href='#Top'>Home</a></li>
+        <li><a href='https://github.com/AlbertoArostegui/TrabajoSGSSI'>About Us</a></li>
+        <li><a href='#Tablas'>Monoplazas</a></li>
         <li class='topnav-right'><a href='logout.php'>Log out</a></li>
         <li class='topnav-right'><a href='ModificarDatosUsuario.php'>Editar Datos</a></li>
         <li class='dropdownicon' onclick='dropdownMenu()'><a href='script.js:void(0)'>  
@@ -72,8 +70,15 @@ if(!isset($_SESSION['user']) and !isset($_SESSION['pw'])) {
 
 
     echo "
-        
-        <h1 class='galerytitle'>MONOPLAZAS</h1>
+        <div class='intro'>
+            <div class='titlecontainer'>
+                <h1>F1 content - made for fans</h1>
+            </div>
+            <div class='videocontainer'>
+                <iframe width='560' height='315' src='https://www.youtube.com/embed/kpHJxA-wnXg' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+            </div>
+        </div>
+        <h1 class='galerytitle' id='Tablas'>MONOPLAZAS</h1>
         <form action='' method='post'>
         <div class='containerSeleccion'>
             <div class='formSeleccion'>
@@ -148,36 +153,15 @@ echo "</div>
         <footer>
             <div class='container'>
                 <div>
-                    <h2>Compan</h2>
-                    <ul class='company'>
-                        <li>About</li>
-                        <li>Blogs</li>
-                        <li>Careers</li>
-                    </ul>
-                </div>
-                <div>
                     <h2>About</h2>
                     <ul class='about'>
-                        <li>About</li>
-                        <li>Blogs</li>
-                        <li>Careers</li>
+                        <li><a href='https://github.com/AlbertoArostegui/TrabajoSGSSI'>Sobre Nosotros</a></li>
+                        <li><a href='#Tablas'>Monoplazas</a></li>
+                        <li><a href='#Top'>Home</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h2>Product</h2>
-                    <ul class='products'>
-                        <li>About</li>
-                        <li>Blogs</li>
-                        <li>Careers</li>
-                    </ul>
-                </div>
-                
             </div>
         </footer>
-        
-        
-        
-    
     </body>";
 
 
