@@ -20,7 +20,7 @@ if(isset($_POST['Registrar'])) {
     $user = $_POST['email'];
     $pass = $_POST['pw'];
  
-    $emailQuery = mysqli_query($conn, "SELECT * FROM `usuarios` WHERE email = '$_	POST[email]'")
+    $emailQuery = mysqli_query($conn, "SELECT * FROM `usuarios` WHERE email = '$_POST[email]'")
     or die (mysqli_error($conn));
     if (mysqli_num_rows($emailQuery) > 0) {
 
