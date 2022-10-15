@@ -60,7 +60,7 @@ if(!isset($_SESSION['user']) and !isset($_SESSION['pw'])) {
         <li><a href='https://github.com/AlbertoArostegui/TrabajoSGSSI'>About Us</a></li>
         <li><a href='#Tablas'>Monoplazas</a></li>
         <li class='topnav-right'><a href='logout.php'>Log out</a></li>
-        <li class='topnav-right'><a href='ModificarDatosUsuario.php'>Editar Datos</a></li>
+        <li class='topnav-right'><a href='ModificarDatosUsuario.php'>Editar Datos Personales</a></li>
         <li class='dropdownicon' onclick='dropdownMenu()'><a href='script.js:void(0)'>  
         &#9776;</a></li>
         </ul>
