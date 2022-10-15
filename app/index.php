@@ -1,7 +1,6 @@
 <?php
 
-session_start();    
-echo $_SESSION['prueba'];
+session_start();
 
   if(isset($_POST['EditarDatos'])){
     header("Location:ModificarTablas.php");
@@ -11,6 +10,7 @@ echo $_SESSION['prueba'];
     
     echo '<head>
         <title>HyperLAND</title>
+        <link rel="icon" href="images/F1Sprite.png">
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

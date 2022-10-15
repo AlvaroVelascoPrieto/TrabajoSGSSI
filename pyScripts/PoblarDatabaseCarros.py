@@ -8,6 +8,9 @@ from selenium.common.exceptions import NoSuchElementException
 import requests
 from bs4 import BeautifulSoup
 import re
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 options = Options()
 #options.add_argument('--headless')
@@ -59,12 +62,19 @@ class Scripter:
 			self.driver.get(pageLink)
 			self.getPageLinks(i)
 
+	def prueba(self):
+		self.driver.get("https://en.wikipedia.org/wiki/Red_Bull_Racing_RB16")
+		self.driver.find_element(By.CLASS_NAME, "infobox-image").click()
+		sleep(1.5)
+		self.driver.find_element(By.XPATH, "/html/body/div[6]/div/div[2]/div/div[1]/img").click()
+		fotoLink = self.driver.current_url
+		print(fotoLink)
 	def scrape(self):
 		for year in self.carLinks.keys():
 			for targetLink in self.carLinks[year]:
 				page = requests.get(targetLink)
 				soup = BeautifulSoup(page.content, "html.parser")
-				print("Scraping: " + targetLink)
+				print(f"Scraping: [{targetLink}]")
 
 
 				try:  # Conseguir piloto
@@ -99,10 +109,16 @@ class Scripter:
 					pass
 
 				try:  # Conseguir foto
-					fotoLink = soup.find('td', {'class': 'infobox-image'}).findNext('img').get('src')
-					fotoLink = 'https:' + fotoLink
+					self.driver.get(targetLink)
+					self.driver.find_element(By.CLASS_NAME, "infobox-image").click()
+					sleep(1)
+					self.driver.find_element(By.XPATH, "/html/body/div[6]/div/div[2]/div/div[1]/img").click()
+					fotoLink = self.driver.current_url
+					print(f"Link de la foto [{fotoLink}]")
 
 				except AttributeError:
+					pass
+				except NoSuchElementException:
 					pass
 
 				try:
@@ -177,6 +193,7 @@ class Scripter:
 S = Scripter()
 S.fillCarLinksDict()
 S.scrape()
+
 		
 		
 		

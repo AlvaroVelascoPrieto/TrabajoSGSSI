@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-$_SESSION['prueba'] = "prueba";
 
 // phpinfo(); se podría incluir en otro archivo php e importarlo para todas las páginas
 $hostname = "db";
