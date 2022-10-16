@@ -13,8 +13,10 @@ var passwordError = document.getElementById('pwError')
 var form = document.getElementById('SignUp')
 var errores = document.getElementById('errores')
 
-form.addEventListener('submit', (e) => {
+//Se utiliza la función que detecta eventos lanzados por un formulario HTML
+form.addEventListener('submit', (e) => { 
     
+    //Comprobamos que el valor del campo de nombre y apellidos sea solo texto
     var aux = NombreAp.value
     for (var i = 0; i < aux.length; i++) {
         if (aux[i] < '9' && aux[i] > '0' || NombreAp.value == '') {
@@ -23,6 +25,7 @@ form.addEventListener('submit', (e) => {
         } 
     }
 
+    //Comprobamos que el email contenga servidor y extensión como es debido
     aux = email.value
     var valido = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     if (!aux.match(valido)) {
@@ -30,13 +33,14 @@ form.addEventListener('submit', (e) => {
         emailError.innerText = "Por favor, introduzca un e-mail válido"
     }
 
-    
+    //Comprobamos que se trate de un número de teléfono registrado en España con el formato que estos tienen
     aux = telf.value
     if (aux < 600000000 || aux > 999999999) {
         e.preventDefault()
         telfError.innerText = "Por favor, introduzca un número de teléfono válido"
     }
 
+    //Se comprueba que las contraseñas coincidan
     var pass1 = pw.value
     var pass2 = pw2.value
     if (!(pass1 === pass2)) {

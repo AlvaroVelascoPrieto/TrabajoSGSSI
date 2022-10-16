@@ -16,6 +16,11 @@ var formTelf = document.getElementById("ModificarTelf")
 var formEmail = document.getElementById("ModificarEmail")
 var formPw = document.getElementById("ModificarPw")
 
+//Se realizan las mismas comprobaciones que en comprobar.js, pero esta vez se hace con un formulario por
+//campo, para poder cambiarlos independientemente y que el boton con método 'submit' no envíe todos los datos
+//a la vez (incluso los campos que no se hayan cambiado)
+
+
 formNombre.addEventListener('submit', (e) => {
     var aux = NombreAp.value
     for (var i = 0; i < aux.length; i++) {
