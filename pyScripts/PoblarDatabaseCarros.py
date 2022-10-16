@@ -54,7 +54,7 @@ class Scripter:
 					pass
 
 	def fillCarLinksDict(self): #Must be executed to fill carLinks list
-		for i in range(1962, 2023): #2023 for till 2022
+		for i in range(1950, 2023): #2023 for till 2022
 			baseLinkA = "https://en.wikipedia.org/wiki/Category:"
 			baseLinkB = "_Formula_One_season_cars"
 

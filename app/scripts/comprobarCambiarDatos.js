@@ -1,4 +1,4 @@
-var NombreAp = document.getElementById('NombreAp')
+var NombreAp = document.getElementById("NombreAp")
 var NombreApError = document.getElementById('NombreApError')
 var DNI = document.getElementById('DNI')
 var DNIerror = document.getElementById('DNIerror')
@@ -10,11 +10,13 @@ var emailError = document.getElementById('emailError')
 var password = document.getElementById('pw')
 var password2 = document.getElementById('pw2')
 var passwordError = document.getElementById('pwError')
-var form = document.getElementById('SignUp')
-var errores = document.getElementById('errores')
+var formNombre = document.getElementById("ModificarNombre")
+var formDNI = document.getElementById("ModificarDNI")
+var formTelf = document.getElementById("ModificarTelf")
+var formEmail = document.getElementById("ModificarEmail")
+var formPw = document.getElementById("ModificarPw")
 
-form.addEventListener('submit', (e) => {
-    
+formNombre.addEventListener('submit', (e) => {
     var aux = NombreAp.value
     for (var i = 0; i < aux.length; i++) {
         if (aux[i] < '9' && aux[i] > '0' || NombreAp.value == '') {
@@ -22,28 +24,8 @@ form.addEventListener('submit', (e) => {
             NombreApError.innerText = "Por favor, introduzca un nombre válido"
         } 
     }
-
-    aux = email.value
-    var valido = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-    if (!aux.match(valido)) {
-        e.preventDefault()
-        emailError.innerText = "Por favor, introduzca un e-mail válido"
-    }
-
-    
-    aux = telf.value
-    if (aux < 600000000 || aux > 999999999) {
-        e.preventDefault()
-        telfError.innerText = "Por favor, introduzca un número de teléfono válido"
-    }
-
-    var pass1 = pw.value
-    var pass2 = pw2.value
-    if (!(pass1 === pass2)) {
-        e.preventDefault()
-        passwordError.innerText = "Las contraseñas no coinciden"
-    }
-
+})
+formDNI.addEventListener('submit', (e) => {
     var dni = DNI.value
     var numero
     var letr
@@ -66,15 +48,28 @@ form.addEventListener('submit', (e) => {
             e.preventDefault()
             DNIerror.innerText = 'Dni erroneo, formato no válido'
         }
-
-    
-    
-
-    
-
-    
-    
-    
-    
 })
-
+formTelf.addEventListener('submit', (e) => {
+    aux = telf.value
+    if (aux < 600000000 || aux > 999999999) {
+        e.preventDefault()
+        telfError.innerText = "Por favor, introduzca un número de teléfono válido"
+    }
+})
+formEmail.addEventListener('submit', (e) => {
+    aux = email.value
+    var valido = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    if (!aux.match(valido)) {
+        e.preventDefault()
+        emailError.innerText = "Por favor, introduzca un e-mail válido"
+    }
+})
+    
+formPw.addEventListener('submit', (e) => {
+    var pass1 = pw.value
+    var pass2 = pw2.value
+    if (!(pass1 === pass2)) {
+        e.preventDefault()
+        passwordError.innerText = "Las contraseñas no coinciden"
+    }
+})

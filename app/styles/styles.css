@@ -35,6 +35,26 @@ div.box{
     text-align: center;
 }
 
+.wave {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wav svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 61px;
+}
+
+.wave .shape-fill {
+    fill: #e70000;
+}
+
 div.intro{
     width: 100%;
     display: grid;
@@ -135,7 +155,7 @@ div.titlecontainer{
 
 div.titlecontainer h1{
     color: white;
-    font-size: 38px;
+    font-size: 68px;
     vertical-align: middle;
 }
 
@@ -180,7 +200,8 @@ div.videocontainer{
 
 h1.galerytitle{
     font-size: 45px;
-    text-align: center;
+    text-align: left;
+    padding-left: 20%;
 }
 
 
@@ -236,6 +257,8 @@ div.boxCentradoSobreImagen{
     width: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    margin: 10px;
+    padding: 10px;
 }
 
 a{

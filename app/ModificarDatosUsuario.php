@@ -47,28 +47,30 @@
     <title>Modificar datos</title>
     <link rel='stylesheet' href='styles/styles.css'>
 		<link rel='icon' href='images/F1Sprite.png'>
+		<script defer src='scripts/comprobarCambiarDatos.js'></script>
 
 </head>
     <body class='bg'>
         <img src='https://upload.wikimedia.org/wikipedia/commons/8/88/Lotus97T.jpg' style='width: 100%; height: auto;'>
         <div class='boxCentradoSobreImagen'>
-        <script defer src='scripts/comprobar.js'></script>
+        
 
-        <form id='SignUp' method='post'>
+        <form id='ModificarNombre' method='post'>
         	<div class='containerSeleccion'>
 				<div class='formSeleccion'>
 					<h3>Nombre y Apellidos</h3>
 				</div>
 				<div class='formSeleccion'>
-					<input class='usernameinput' id='NombreAp' name='NombreAp' placeholder='Ej: Pedro De La Rosa' align='center'>
-					
+					<input class='usernameinput' id='NombreAp' name='NombreAp' placeholder='Ej: Pedro De La Rosa' align='center'>		
 				</div>
 				<div class='formSeleccion'>
 					<input type='submit' class='tag' name='AplicarNombre' value='Aplicar'/>
 				</div>
 				<div><label for='NombreAp' id='NombreApError' class='error'></label></div>
         	</div>
+        	</form>
 
+        <form id='ModificarDNI' method='post'>
         	<div class='containerSeleccion'>
 				<div class='formSeleccion'>
 					<h3>DNI</h3>
@@ -78,9 +80,13 @@
 				</div>
 				<div class='formSeleccion'>
 					<input type='submit' class='tag' name='AplicarDNI' value='Aplicar'/>
+					
         </div>
+        <div><label for='DNI' id='DNIerror' class='error'></label></div>
         	</div>
+        </form>
 
+        <form id='ModificarTelf' method='post'>
         	<div class='containerSeleccion'>
 				<div class='formSeleccion'>
 					<h3>Telefono</h3>
@@ -90,8 +96,11 @@
 				</div>
 				<div class='formSeleccion'>
 					<input type='submit' class='tag' name='AplicarTelefono' value='Aplicar'/>
+					
 				</div>
+				<div><label for='telefono' id='telfError' class='error'></label></div>
         	</div>
+        </form>
 
         	<div class='containerSeleccion'>
 				<div class='formSeleccion'>
@@ -102,9 +111,12 @@
 				</div>
 				<div class='formSeleccion'>
 					<input type='submit' class='tag' name='AplicarFechaNac' value='Aplicar'/>
+					
 				</div>
+				<div><label for='fechaN' id='' class='error'></label></div>
         	</div>
         	
+        <form id='ModificarEmail' method='post'>
         	<div class='containerSeleccion'>
 				<div class='formSeleccion'>
 					<h3>E-Mail</h3>
@@ -114,9 +126,13 @@
 				</div>
 				<div class='formSeleccion'>
 					<input type='submit' class='tag' name='AplicarEMail' value='Aplicar'/>
+					
 				</div>
+				<div><label for='email' id='emailError' class='error'></label></div>
         	</div>
+        </form>
         	
+        <form id='ModificarPw' method='post'>
         	<div class='containerSeleccion'>
 				<div class='formSeleccion'>
 					<h3>Contrasena</h3>
@@ -129,9 +145,15 @@
 				</div>
 				<div class='formSeleccion'>
 					<input type='submit' class='tag' name='AplicarContra' value='Aplicar'/>
+					
 				</div>
+				<div><label for='pw' id='pwError' class='error'></label></div>
         	</div>
         	</form>
+        	<div>
+        	<li class='topnav-right'><a href='index.php'>Volver</a></li>
         </div>
+        </div>
+
     </body>";    
 ?>

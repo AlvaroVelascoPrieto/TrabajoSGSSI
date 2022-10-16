@@ -32,6 +32,7 @@ echo "
 <head>
     <title>HyperLAND-SignUp</title>
     <link rel='stylesheet' href='styles/stylesSignUp.css'>
+    <link rel='icon' href='images/F1Sprite.png'>
 </head>
     <body class='bg'>
         <img src='images/AloBG.jpg' style='max-width: 100%; height: auto;'>
