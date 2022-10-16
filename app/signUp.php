@@ -1,19 +1,21 @@
 <?php
 
+//Se restaura la sesion anterior
 session_start();
 
-// phpinfo(); se podría incluir en otro archivo php e importarlo para todas las páginas
+//Se definen todos los datos necesarios para conectarse con la base de datos
 $hostname = "db";
 $username = "admin";
 $password = "test";
 $db = "database";
 
-
+//Se establece conexion con la base de datos
 $conn = mysqli_connect($hostname,$username,$password,$db);
 if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);
 }
 
+//Se comprueba si se ha pulsado el boton de registrar se comprueba si el email no esta ya registrado y se hacen los cambios necesarios en la base de datos
 if(isset($_POST['Registrar'])) {
 
     $user = $_POST['email'];
@@ -47,6 +49,8 @@ if(isset($_POST['Registrar'])) {
     }
 }
 
+
+//Se genera el formulario en el que el usuario define los datos a introducir y se define el archivo de javascript que realiza las comprobaciones de los campos
 echo "  
 <head>
     <title>Sing Up</title>

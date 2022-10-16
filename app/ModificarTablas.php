@@ -1,16 +1,20 @@
 <?php
+//Se definen los datos para establecer conexion con base de datos
   $hostname = "db";
   $username = "admin";
   $password = "test";
   $db = "database";
 
+//Se establece conexion con la basede datos
   $conn = mysqli_connect($hostname,$username,$password,$db);
   if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);
   }
   
+  //Se define la query para poblar el desplegable de modelos de coches a editar
   $query = mysqli_query($conn, "SELECT Modelo FROM carros") or die (mysqli_error($conn));
   
+  //SE comprueba si alguno de los botones de aplicar se ha presionado y se realiza el cambio correspondiente en la base de datos
    if(isset($_POST['AplicarVictorias'])){
 	$query2 = mysqli_query($conn, "UPDATE carros SET Victorias='$_POST[NVictorias]' WHERE Modelo='$_POST[Dato1]'") or die (mysqli_error($conn));
   }
@@ -23,6 +27,8 @@
   else if(isset($_POST['AplicarAnno'])){
 	$query5 = mysqli_query($conn, "UPDATE carros SET Anno='$_POST[Anno]' WHERE Modelo='$_POST[Dato1]'") or die (mysqli_error($conn));
   }
+  
+  //SE genera el formulario para editar los datos y en el bucle se rellena el desplegable con los datos de los coches de la base de datos
   echo "  
 <head>
     <title>Sing Up</title>

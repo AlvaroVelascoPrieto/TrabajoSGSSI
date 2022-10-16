@@ -1,9 +1,9 @@
 <?php
 
-session_start();
+session_start(); //Se restaura la sesion para queel usuario y la contraseña loggeadas aparezcan
 
-  if(isset($_POST['EditarDatos'])){
-    header("Location:ModificarTablas.php");
+  if(isset($_POST['EditarDatos'])){			//Se comprueba si se ha hecho click en editar datos para efectuar la redireccion
+    header("Location:ModificarTablas.php");		//Se redirecciona
     exit;
   }
 
@@ -15,11 +15,11 @@ session_start();
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Roboto:wght@500&display=swap" rel="stylesheet">
-    </head>';
+    </head>';		//Cabecera HTML que define el icono de la pagina y las fuentes
     
     
   // phpinfo();
-  $hostname = "db";
+  $hostname = "db";		//Se definen los datos de acceso a la base de datos
   $username = "admin";
   $password = "test";
   $db = "database";
@@ -31,7 +31,7 @@ session_start();
   }
 
 
-
+//Querys que luego se emplearan para poblar los desplegables
 $query = mysqli_query($conn, "SELECT nombreAp FROM usuarios")
    or die (mysqli_error($conn));
 $query2 = mysqli_query($conn, "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_NAME`='carros';")
@@ -69,7 +69,7 @@ if(!isset($_SESSION['user']) and !isset($_SESSION['pw'])) {
 
         }
 
-
+//Se definen diferentes divs que contienen un titulo y un video
     echo "
         <div class='intro'>
             <div class='titlecontainer'>
@@ -100,7 +100,7 @@ if(!isset($_SESSION['user']) and !isset($_SESSION['pw'])) {
                 
         ";
 
-
+//Se rellenan los desplegables con los datos de la basede datos
 while ($option = mysqli_fetch_array($query2)) {
     echo "<option value='{$option['COLUMN_NAME']}'>{$option['COLUMN_NAME']}</option>";
 }
@@ -136,7 +136,7 @@ echo"
         </div>
         </form>
         <div class='container'>";
-
+//Se comprueba si se ha hecho click en buscar y si los desplegables estan seleccionados y se rellena la galeria con los datos de la base de datos
 if(isset($_POST['Dato1']) && isset($_POST['Dato2']) && isset($_POST['Buscar'])){
     $dato1= $_POST['Dato1'];
     $dato2= $_POST['Dato2'];
@@ -157,7 +157,7 @@ if(isset($_POST['Dato1']) && isset($_POST['Dato2']) && isset($_POST['Buscar'])){
     
 }
 
-                     
+//Se cierran las divs que contienen las tablas y se genera el codigo html del footer           
 echo "</div>
         <br>
         <br>

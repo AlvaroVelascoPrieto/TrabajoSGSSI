@@ -1,19 +1,21 @@
 <?php
-
+//Se de restaura la sesion anterior
 session_start();
 
+//Se definen los datos necesarios para establecer conexion con la base de datos
 // phpinfo();
 $hostname = "db";
 $username = "admin";
 $password = "test";
 $db = "database";
 
-
+//Se establece conexion con la base de datos
 $conn = mysqli_connect($hostname,$username,$password,$db);
 if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);
 }
 
+//Se comprueba si se ha pulsado en iniciar sesion y se comprueba que la contraseña introducida coincida con la que el usuario tiene en la base de datos
 if(isset($_POST['IniciarSesion'])) {
 	$dato1= $_POST['email'];
     $query = mysqli_query($conn, "SELECT pass FROM usuarios WHERE email = '$_POST[email]';")
@@ -22,12 +24,13 @@ if(isset($_POST['IniciarSesion'])) {
     if(strcmp($contra[0],$_POST['password'])==0){
         $_SESSION['user'] = $dato1;
         $_SESSION['pw'] = $_POST['password'];
-
+//Se redirecciona al usuario a la pagina principal
     	header("Location:index.php");
     	exit;
     }
   }
 
+//Se genera el formulario que recoge todos los datos del usuario
 echo "  
 <head>
     <title>HyperLAND-SignUp</title>

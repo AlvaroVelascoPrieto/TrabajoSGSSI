@@ -1,20 +1,20 @@
 <?php
 
-	session_start();
+session_start(); //Se recupera la sesion
 	
+//Se definen los datos	para registrarse en la base de datos
   $hostname = "db";
   $username = "admin";
   $password = "test";
   $db = "database";
-	$email = $_SESSION['user'];
-
+$email = $_SESSION['user']; //Se define el email del usuario que ha iniciado sesion
+//Se establece conexion con la base de datos
   $conn = mysqli_connect($hostname,$username,$password,$db);
   if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);
   }
   
-  $query = mysqli_query($conn, "SELECT Modelo FROM carros") or die (mysqli_error($conn));
-  
+//Se mira si alguno de los botones de aplicar han sido presionado y se actualiza el datos correspondiente en la base de datos
    if(isset($_POST['AplicarNombre'])){
 	$query2 = mysqli_query($conn, "UPDATE usuarios SET nombreAp='$_POST[NombreAp]' WHERE email='$email'") or die (mysqli_error($conn));
   }
@@ -27,7 +27,7 @@
   else if(isset($_POST['AplicarFechaNac'])){
 	$query5 = mysqli_query($conn, "UPDATE usuarios SET fechaN='$_POST[fechaN]' WHERE email='$email'") or die (mysqli_error($conn));
   }
-  else if(isset($_POST['AplicarEMail'])){
+  else if(isset($_POST['AplicarEMail'])){ //En esta opcion se checkea que el email introducido no se encuentreregistrado en la base de datos
   	$emailQuery = mysqli_query($conn, "SELECT * FROM `usuarios` WHERE email = '$_POST[email]'")
     or die (mysqli_error($conn));
     	if (mysqli_num_rows($emailQuery) > 0) {
@@ -41,7 +41,7 @@
   else if(isset($_POST['AplicarContra'])){
 	$query7 = mysqli_query($conn, "UPDATE usuarios SET pass='$_POST[pw]' WHERE email='$email'") or die (mysqli_error($conn));
   }
-
+//Se crea el formulario para editar las tablas
   echo "  
 <head>
     <title>Modificar datos</title>

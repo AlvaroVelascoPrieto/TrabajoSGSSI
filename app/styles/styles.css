@@ -271,40 +271,6 @@ label.error {
     font-size: 12;
 }
 
-
-/*###########MOVIL#############*/
-@media screen and (max-width:680px){
-    ul.topnav li:not(:nth-child(1)){
-        display: none;
-    }
-    
-    ul.topnav li.dropdownicon{
-        display: block;
-        float: right;
-    }
-    
-    ul.topnav.responsive li.dropdownicon{
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-    
-    ul.topnav.responsive{
-        position: relative;
-    }
-    
-    ul.topnav.responsive li{
-        display: inline;
-        float: none;
-    }
-    
-    ul.topnav.responsive li a{
-        display: block;
-        text-align: left;
-    }
-    
-}
-
 @font-face {
     font-family: 'FuenteF1'; /*a name to be used later*/
     src: url('../fonts/Formula1-Regular.ttf'); /*URL to font*/
