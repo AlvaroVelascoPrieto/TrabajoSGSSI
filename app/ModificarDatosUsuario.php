@@ -6,7 +6,7 @@
   $username = "admin";
   $password = "test";
   $db = "database";
-$email = $_SESSION['user'];
+	$email = $_SESSION['user'];
 
   $conn = mysqli_connect($hostname,$username,$password,$db);
   if ($conn->connect_error) {
@@ -44,25 +44,31 @@ $email = $_SESSION['user'];
 
   echo "  
 <head>
-    <title>Sing Up</title>
+    <title>Modificar datos</title>
     <link rel='stylesheet' href='styles/styles.css'>
+		<link rel='icon' href='images/F1Sprite.png'>
 
 </head>
     <body class='bg'>
         <img src='https://upload.wikimedia.org/wikipedia/commons/8/88/Lotus97T.jpg' style='width: 100%; height: auto;'>
         <div class='boxCentradoSobreImagen'>
-        <form id='ModificarNombre' method='post'>
+        <script defer src='scripts/comprobar.js'></script>
+
+        <form id='SignUp' method='post'>
         	<div class='containerSeleccion'>
 				<div class='formSeleccion'>
 					<h3>Nombre y Apellidos</h3>
 				</div>
 				<div class='formSeleccion'>
 					<input class='usernameinput' id='NombreAp' name='NombreAp' placeholder='Ej: Pedro De La Rosa' align='center'>
+					
 				</div>
 				<div class='formSeleccion'>
 					<input type='submit' class='tag' name='AplicarNombre' value='Aplicar'/>
 				</div>
+				<div><label for='NombreAp' id='NombreApError' class='error'></label></div>
         	</div>
+
         	<div class='containerSeleccion'>
 				<div class='formSeleccion'>
 					<h3>DNI</h3>
@@ -72,7 +78,9 @@ $email = $_SESSION['user'];
 				</div>
 				<div class='formSeleccion'>
 					<input type='submit' class='tag' name='AplicarDNI' value='Aplicar'/>
+        </div>
         	</div>
+
         	<div class='containerSeleccion'>
 				<div class='formSeleccion'>
 					<h3>Telefono</h3>
@@ -84,6 +92,7 @@ $email = $_SESSION['user'];
 					<input type='submit' class='tag' name='AplicarTelefono' value='Aplicar'/>
 				</div>
         	</div>
+
         	<div class='containerSeleccion'>
 				<div class='formSeleccion'>
 					<h3>Fecha de nacimiento</h3>
@@ -95,6 +104,7 @@ $email = $_SESSION['user'];
 					<input type='submit' class='tag' name='AplicarFechaNac' value='Aplicar'/>
 				</div>
         	</div>
+        	
         	<div class='containerSeleccion'>
 				<div class='formSeleccion'>
 					<h3>E-Mail</h3>
@@ -106,6 +116,7 @@ $email = $_SESSION['user'];
 					<input type='submit' class='tag' name='AplicarEMail' value='Aplicar'/>
 				</div>
         	</div>
+        	
         	<div class='containerSeleccion'>
 				<div class='formSeleccion'>
 					<h3>Contrasena</h3>

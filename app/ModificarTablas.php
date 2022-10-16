@@ -27,6 +27,7 @@
 <head>
     <title>Sing Up</title>
     <link rel='stylesheet' href='styles/styles.css'>
+    <script defer src='scripts/comprobar.js'>
 
 </head>
     <body class='bg'>

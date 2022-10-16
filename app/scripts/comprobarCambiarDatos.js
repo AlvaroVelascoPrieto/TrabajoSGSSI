@@ -41,7 +41,7 @@ form.addEventListener('submit', (e) => {
     var pass2 = pw2.value
     if (!(pass1 === pass2)) {
         e.preventDefault()
-        passwordErrorz.innerText = "Las contraseñas no coinciden"
+        passwordError.innerText = "Las contraseñas no coinciden"
     }
 
     var dni = DNI.value

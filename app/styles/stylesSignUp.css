@@ -49,3 +49,12 @@ h2 {
     font-family: 'FuenteF1';
     font-size: 16px;
 }
+div.containerSeleccion {
+  text-align: center;
+}
+
+div.formSeleccion {
+  display: inline-block;
+  padding: 1rem 1rem;
+  vertical-align: middle;
+}
