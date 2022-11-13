@@ -1,0 +1,87 @@
+body {
+    background-color: rgb(20, 20, 20);
+    margin: 0px;
+}
+
+#menu {
+    position: static;
+    margin-left: 35%;
+    padding-top: 5%;
+    width: 30%;
+    font-family: 'Verdana';
+}
+
+#menu-items{
+    padding: 13vh;
+
+    background: rgba(255, 255, 255, 0.35);
+    position: relative;
+    z-index: 2;    
+}
+
+#menu-items a{
+    position: relative;
+}
+
+#SignUp input{
+    height: 3%;
+    width: 100%;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid silver;
+    font-size: 15px;
+    background: none;
+    outline: none;
+}
+#SignUp label{
+    pointer-events: none;
+    font-size: 12px;
+}
+#SignUp div input{
+    margin-top: 10%;
+    background-color: rgba(126, 126, 223, 0.7);
+    border-bottom: transparent;
+}
+
+#menu-background-pattern {
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.1) 9%, 
+      transparent 9%
+    );
+    background-position: 0% 0%;
+    background-size: 12vmin 12vmin;
+    height: 100vh;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    transition: opacity 800ms ease, 
+                background-size 800ms ease,
+                background-position 800ms ease;
+    width: 100vw;
+    z-index: 1;
+}
+
+#menu-items:hover ~ #menu-background-pattern {
+    background-size: 11vmin 11vmin;
+    opacity: 0.5;
+}
+
+#menu-background-image {
+    height: 100%;
+    width: 100%;
+
+    background-image: url("https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2022/06/18/16555880993196.jpg");
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 0;
+    
+    background-position: center 40%;
+    background-size: 110vmax;
+    opacity: 0.22;
+
+    transition: opacity 800ms ease,
+    background-size 800ms ease,
+    background-position 800ms ease;
+}

@@ -1,5 +1,5 @@
 var NombreAp = document.getElementById('NombreAp')
-var NombreApError = document.getElementById('NombreApError')
+var NombreApError = document.getElementById('nap')
 var DNI = document.getElementById('DNI')
 var DNIerror = document.getElementById('DNIerror')
 var telf = document.getElementById('telefono')
