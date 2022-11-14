@@ -4,7 +4,11 @@ session_start();
 if (!isset($_SESSION['token'])) {
 $_SESSION['token'] = bin2hex(random_bytes(24));
 }
-
+?>
+<html>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com https://upload.wikimedia.org; image-src https://upload.wikimedia.org https://www.youtube.com;">
+</html>
+<?php
 //Se definen los datos necesarios para establecer conexion con la base de datos
 // phpinfo();
 $hostname = "db";
@@ -43,7 +47,12 @@ echo "
     <body class='bg'>
         <img src='images/AloBG.jpg' style='max-width: 100%; height: auto;'>
         <div class='boxCentradoSobreImagen'>
-            <form id='SignIp' method='post'>
+            <form id='SignIn' method='post'>
+            <input type='hidden' name='token' value="; 
+        
+                $_SESSION['token'];
+                
+                echo ">
                 <h1>Sign In</h1>
                 <h2>E-mail</h2>
                         <input type='text' name='email' placeholder='ejemplo@servidor.extension' required>
@@ -52,11 +61,7 @@ echo "
                 <p id=placeholder></p>
                 <br>
                 <input type='submit' value='Iniciar Sesion' name='IniciarSesion'> 
-                <input type='hidden' name='token' value="; 
-        
-                $_SESSION['token'];
                 
-                echo ">
             </form>
         </div> 
     </body>

@@ -98,6 +98,11 @@ if(!isset($_SESSION['user']) and !isset($_SESSION['pw'])) {
 </div>
         <h1 class='galerytitle' id='Tablas'>MONOPLAZAS</h1>
         <form action='' method='post' >
+        <input type='hidden' name='token' value="; 
+        
+        $_SESSION['token'];
+        
+        echo ">
         <div class='containerSeleccion'>
             <div class='formSeleccion'>
                 <h2>Selecciona 2 datos a visualizar:</h2>

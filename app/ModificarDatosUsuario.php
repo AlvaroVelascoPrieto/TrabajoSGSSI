@@ -4,6 +4,11 @@ session_start(); //Se recupera la sesion
 if (!isset($_SESSION['token'])) {
 $_SESSION['token'] = bin2hex(random_bytes(24));
 }
+?>
+<html>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com https://upload.wikimedia.org; image-src https://upload.wikimedia.org https://www.youtube.com;">
+</html>
+<?php
 //Se definen los datos	para registrarse en la base de datos
   $hostname = "db";
   $username = "admin";
