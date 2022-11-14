@@ -2,6 +2,9 @@
 
 //Se restaura la sesion anterior
 session_start();
+if (!isset($_SESSION['token'])) {
+$_SESSION['token'] = bin2hex(random_bytes(24));
+}
 
 //Se definen todos los datos necesarios para conectarse con la base de datos
 $hostname = "db";
@@ -98,6 +101,11 @@ echo "
                 <br>
                 <br>
                 <br>
+                <input type='hidden' name='token' value="; 
+        
+                    $_SESSION['token'];
+        
+            echo ">
                 <label id='errores'></label>
                 <input type='submit' class='tag' name='Registrar' value='Registrar'/>
             </form>

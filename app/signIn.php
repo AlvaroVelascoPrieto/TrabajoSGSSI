@@ -1,6 +1,9 @@
 <?php
 //Se de restaura la sesion anterior
 session_start();
+if (!isset($_SESSION['token'])) {
+$_SESSION['token'] = bin2hex(random_bytes(24));
+}
 
 //Se definen los datos necesarios para establecer conexion con la base de datos
 // phpinfo();
@@ -49,6 +52,11 @@ echo "
                 <p id=placeholder></p>
                 <br>
                 <input type='submit' value='Iniciar Sesion' name='IniciarSesion'> 
+                <input type='hidden' name='token' value="; 
+        
+                $_SESSION['token'];
+                
+                echo ">
             </form>
         </div> 
     </body>

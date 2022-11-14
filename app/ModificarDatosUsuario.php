@@ -1,7 +1,9 @@
 <?php
 
 session_start(); //Se recupera la sesion
-	
+if (!isset($_SESSION['token'])) {
+$_SESSION['token'] = bin2hex(random_bytes(24));
+}
 //Se definen los datos	para registrarse en la base de datos
   $hostname = "db";
   $username = "admin";
@@ -68,6 +70,11 @@ $email = $_SESSION['user']; //Se define el email del usuario que ha iniciado ses
 				</div>
 				<div><label for='NombreAp' id='NombreApError' class='error'></label></div>
         	</div>
+			<input type='hidden' name='token' value="; 
+        
+        $_SESSION['token'];
+        
+        echo ">
         	</form>
 
         <form id='ModificarDNI' method='post'>
@@ -84,6 +91,11 @@ $email = $_SESSION['user']; //Se define el email del usuario que ha iniciado ses
         </div>
         <div><label for='DNI' id='DNIerror' class='error'></label></div>
         	</div>
+			<input type='hidden' name='token' value="; 
+        
+        $_SESSION['token'];
+        
+        echo ">
         </form>
 
         <form id='ModificarTelf' method='post'>
@@ -100,6 +112,11 @@ $email = $_SESSION['user']; //Se define el email del usuario que ha iniciado ses
 				</div>
 				<div><label for='telefono' id='telfError' class='error'></label></div>
         	</div>
+			<input type='hidden' name='token' value="; 
+        
+        $_SESSION['token'];
+        
+        echo ">
         </form>
 
         	<div class='containerSeleccion'>
@@ -130,6 +147,11 @@ $email = $_SESSION['user']; //Se define el email del usuario que ha iniciado ses
 				</div>
 				<div><label for='email' id='emailError' class='error'></label></div>
         	</div>
+			<input type='hidden' name='token' value="; 
+        
+        $_SESSION['token'];
+        
+        echo ">
         </form>
         	
         <form id='ModificarPw' method='post'>
@@ -149,6 +171,11 @@ $email = $_SESSION['user']; //Se define el email del usuario que ha iniciado ses
 				</div>
 				<div><label for='pw' id='pwError' class='error'></label></div>
         	</div>
+			<input type='hidden' name='token' value="; 
+        
+        $_SESSION['token'];
+        
+        echo ">
         	</form>
         	<div>
         	<li class='topnav-right'><a href='index.php'>Volver</a></li>
