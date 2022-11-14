@@ -28,6 +28,8 @@
 	$query5 = mysqli_query($conn, "UPDATE carros SET Anno='$_POST[Anno]' WHERE Modelo='$_POST[Dato1]'") or die (mysqli_error($conn));
   }
   
+  if ($_POST["token"] == $_SESSION["token"]) {
+
   //SE genera el formulario para editar los datos y en el bucle se rellena el desplegable con los datos de los coches de la base de datos
   echo "  
 <head>
@@ -98,5 +100,6 @@ while ($option = mysqli_fetch_array($query)) {
         	</div>
         	</form>
         </div>
-    </body>";    
+    </body>";    }
+	else{echo "Session token does not match, session invalid";}
 ?>
