@@ -1,0 +1,1 @@
+https://www.section.io/engineering-education/csrf-protection-in-php/#step-1-create-a-php-session-and-generate-a-csrf-token
