@@ -1,4 +1,5 @@
 <?php
+session_set_cookie_params($httponly= true, $samesite='Strict');
 session_start();
 if (!isset($_SESSION['token'])) {
 $_SESSION['token'] = bin2hex(random_bytes(24));

@@ -5,11 +5,7 @@ session_start();
 if (!isset($_SESSION['token'])) {
 $_SESSION['token'] = bin2hex(random_bytes(24));
 }
-?>
-<html>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com https://upload.wikimedia.org; image-src https://upload.wikimedia.org https://www.youtube.com;">
-</html>
-<?php
+
 //Se definen todos los datos necesarios para conectarse con la base de datos
 $hostname = "db";
 $username = "admin";
@@ -36,23 +32,33 @@ if(isset($_POST['Registrar'])) {
 
     }else{
 
-    $_SESSION['user'] = $user;
-    $_SESSION['pass'] = $pass;
+        $_SESSION['user'] = $user;
+        $_SESSION['pass'] = $pass;
+        
+        $nombreAp = $_POST['NombreAp'];
+        $DNI = $_POST['DNI'];
+        $telf = $_POST['telefono'];
+        $fechaN = $_POST['fechaN'];
+        $email = $user;
+        
+        $stmt = $conn->prepare("INSERT INTO usuarios(nombreAp, DNI, telf, fechaN, email, pass) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssisss",$nombreAp, $DNI, $telf, $fechaN, $email, $pass);
     
-
-    $query = mysqli_query($conn, "INSERT INTO 
-    usuarios(nombreAp, DNI, telf, fechaN, email, pass)
-    VALUES('$_POST[NombreAp]', 
-        '$_POST[DNI]', 
-        '$_POST[telefono]', 
-        '$_POST[fechaN]', 
-        '$user',
-        '$pass')")
-    or die (mysqli_error($conn));
-    header("Location:index.php");
-    exit;
-
+       
+       
     
+       /* ejecuta sentencias prepradas */
+       $stmt->execute();
+    
+    
+       /* cierra sentencia y conexión */
+       $stmt->close();
+    
+       /* cierra la conexión */
+       $conn->close();
+    
+        header("Location:index.php");
+        exit;
     }
 }
 
@@ -105,11 +111,7 @@ echo "
                 <br>
                 <br>
                 <br>
-                <input type='hidden' name='token' value="; 
-        
-                    $_SESSION['token'];
-        
-            echo ">
+                
                 <label id='errores'></label>
                 <input type='submit' class='tag' name='Registrar' value='Registrar'/>
             </form>
