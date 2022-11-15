@@ -1,5 +1,5 @@
 <?php
-
+ini_set('display_errors','off');
 session_start(); //Se recupera la sesion
 if (!isset($_SESSION['token'])) {
 $_SESSION['token'] = bin2hex(random_bytes(24));
