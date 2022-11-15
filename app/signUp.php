@@ -4,6 +4,8 @@ session_set_cookie_params($httponly= true, $samesite='Strict');
 session_start();
 require_once 'utils.php';
 
+$token = createToken();
+
 //Se definen todos los datos necesarios para conectarse con la base de datos
 $hostname = "db";
 $username = "admin";
@@ -18,42 +20,44 @@ if ($conn->connect_error) {
 
 //Se comprueba si se ha pulsado el boton de registrar se comprueba si el email no esta ya registrado y se hacen los cambios necesarios en la base de datos
 if(isset($_POST['Registrar'])) {
+    if(validateToken($_POST['csrf_token'])) {
 
-    $user = $_POST['email'];
-    $pass = $_POST['pw'];
- 
-    $emailQuery = mysqli_query($conn, "SELECT * FROM `usuarios` WHERE email = '$_POST[email]'")
-    or die (mysqli_error($conn));
-    if (mysqli_num_rows($emailQuery) > 0) {
-
-        echo "<script> alert('El email que ha introducido ya está registrado'); </script>";
-
-    }else{
-
-        $_SESSION['user'] = $user;
-        $_SESSION['pass'] = $pass;
-        
-        $nombreAp = $_POST['NombreAp'];
-        $DNI = $_POST['DNI'];
-        $telf = $_POST['telefono'];
-        $fechaN = $_POST['fechaN'];
-        $email = $user;
-        
-        $stmt = $conn->prepare("INSERT INTO usuarios(nombreAp, DNI, telf, fechaN, email, pass) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssisss",$nombreAp, $DNI, $telf, $fechaN, $email, $pass);
+        $user = $_POST['email'];
+        $pass = $_POST['pw'];
     
-        /* ejecuta sentencias prepradas */
-        $stmt->execute();
+        $emailQuery = mysqli_query($conn, "SELECT * FROM `usuarios` WHERE email = '$_POST[email]'")
+        or die (mysqli_error($conn));
+        if (mysqli_num_rows($emailQuery) > 0) {
+
+            echo "<script> alert('El email que ha introducido ya está registrado'); </script>";
+
+        }else{
+
+            $_SESSION['user'] = $user;
+            $_SESSION['pass'] = $pass;
+            
+            $nombreAp = $_POST['NombreAp'];
+            $DNI = $_POST['DNI'];
+            $telf = $_POST['telefono'];
+            $fechaN = $_POST['fechaN'];
+            $email = $user;
+            
+            $stmt = $conn->prepare("INSERT INTO usuarios(nombreAp, DNI, telf, fechaN, email, pass) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssisss",$nombreAp, $DNI, $telf, $fechaN, $email, $pass);
         
-        /* cierra sentencia y conexión */
-        $stmt->close();
+            /* ejecuta sentencias prepradas */
+            $stmt->execute();
+            
+            /* cierra sentencia y conexión */
+            $stmt->close();
+            
+            /* cierra la conexión */
+            $conn->close();
         
-        /* cierra la conexión */
-        $conn->close();
-    
-        header("Location:index.php");
-        exit;
-    }
+            header("Location:index.php");
+            exit;
+        }
+    }else{echo "No se pudo registrar, token invalido";}
 }
 
 //Se genera el formulario en el que el usuario define los datos a introducir y se define el archivo de javascript que realiza las comprobaciones de los campos
@@ -104,7 +108,9 @@ echo "
                 <br>
                 <br>
                 <br>
-                
+                <input type='hidden' name='csrf_token' value='";
+                echo $token;
+                echo "'>
                 <label id='errores'></label>
                 <input type='submit' class='tag' name='Registrar' value='Registrar'/>
             </form>
