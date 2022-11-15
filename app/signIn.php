@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors','off');
 //Se de restaura la sesion anterior
 session_start();
 if (!isset($_SESSION['token'])) {
