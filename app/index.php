@@ -1,18 +1,19 @@
 <?php
-session_set_cookie_params($httponly= true, $samesite='Strict');
 ini_set('display_errors','off');
+session_set_cookie_params($httponly= true, $samesite='Strict');
 session_start();
-if (!isset($_SESSION['token'])) {
-$_SESSION['token'] = bin2hex(random_bytes(24));
-}
-?>
-<?php
+require_once 'utils.php';
+
+
+
+$token = createToken();
 
   if(isset($_POST['EditarDatos'])){			//Se comprueba si se ha hecho click en editar datos para efectuar la redireccion
-    header("Location:ModificarTablas.php");		//Se redirecciona
+    if(validateToken($_POST['csrf_token'])) {
+        header("Location:ModificarTablas.php");	//Se redirecciona
+    }	
     exit;
   }
-
     
     echo '<head>
         <title>HyperLAND</title>
@@ -96,14 +97,9 @@ if(!isset($_SESSION['user']) and !isset($_SESSION['pw'])) {
     </svg>
 </div>
         <h1 class='galerytitle' id='Tablas'>MONOPLAZAS</h1>
-        <form action='' method='post' >
-        <input type='hidden' name='token' value="; 
-        
-        $_SESSION['token'];
-        
-        echo ">
+        <form action='' method='post'>
         <div class='containerSeleccion'>
-            <div class='formSeleccion'>
+        <div class='formSeleccion'>
                 <h2>Selecciona 2 datos a visualizar:</h2>
             </div>  
             <div class='formSeleccion'>
@@ -141,17 +137,14 @@ echo"
                 <div class='formSeleccion'>
                 <input type='submit' name='Buscar' value ='Buscar'>
                 </div>  
+                <input type='hidden' name='csrf_token' value='"; 
+                echo $token;
+                echo "'>
                <div class='formSeleccion'>
                  <input type='submit' name='EditarDatos' value ='Editar Datos' class='EditarDatos'>
                </div>
         </div>
         
-        <input type='hidden' name='token' value="; 
-        
-        $_SESSION['token'];
-        
-        echo ">
-
         </form>
         <div class='container'>";
 //Se comprueba si se ha hecho click en buscar y si los desplegables estan seleccionados y se rellena la galeria con los datos de la base de datos

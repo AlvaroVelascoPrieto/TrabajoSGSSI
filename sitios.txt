@@ -1,1 +1,2 @@
 https://www.section.io/engineering-education/csrf-protection-in-php/#step-1-create-a-php-session-and-generate-a-csrf-token
+https://www.getastra.com/blog/php-security/php-csrf-protection/

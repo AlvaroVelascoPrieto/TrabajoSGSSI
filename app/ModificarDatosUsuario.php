@@ -1,11 +1,9 @@
 <?php
 ini_set('display_errors','off');
-session_start(); //Se recupera la sesion
-if (!isset($_SESSION['token'])) {
-$_SESSION['token'] = bin2hex(random_bytes(24));
-}
-?>
-<?php
+session_set_cookie_params($httponly= true, $samesite='Strict');
+session_start();
+require_once 'utils.php';
+
 //Se definen los datos	para registrarse en la base de datos
   $hostname = "db";
   $username = "admin";

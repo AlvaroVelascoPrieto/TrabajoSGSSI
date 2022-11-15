@@ -1,15 +1,8 @@
 <?php
 ini_set('display_errors','off');
+session_set_cookie_params($httponly= true, $samesite='Strict');
 session_start();
-require_once __DIR__ ./;
-
-use steveclifton\phpcsrftokens\Csrf;
-
-session_start();
-
-if (!empty($_GET['a'])) {
-	echo (Csrf::verifyToken('home') ? 'success' : 'unsuccessful');
-}
+require_once 'utils.php';
 
 //Se definen los datos para establecer conexion con base de datos
   $hostname = "db";
@@ -39,8 +32,6 @@ if (!empty($_GET['a'])) {
   else if(isset($_POST['AplicarAnno'])){
 	$query5 = mysqli_query($conn, "UPDATE carros SET Anno='$_POST[Anno]' WHERE Modelo='$_POST[Dato1]'") or die (mysqli_error($conn));
   }
-  
-  if ($_POST["token"] == $_SESSION["token"]) {
 
   //SE genera el formulario para editar los datos y en el bucle se rellena el desplegable con los datos de los coches de la base de datos
   echo "  
@@ -58,6 +49,7 @@ if (!empty($_GET['a'])) {
                 	<select name='Dato1'>";
                 
         
+
 
 
 while ($option = mysqli_fetch_array($query)) {
@@ -112,6 +104,5 @@ while ($option = mysqli_fetch_array($query)) {
         	</div>
         	</form>
         </div>
-    </body>";    }
-	else{echo "Session token does not match, session invalid";}
+    </body>";
 ?>

@@ -1,10 +1,8 @@
 <?php
 ini_set('display_errors','off');
-//Se restaura la sesion anterior
+session_set_cookie_params($httponly= true, $samesite='Strict');
 session_start();
-if (!isset($_SESSION['token'])) {
-$_SESSION['token'] = bin2hex(random_bytes(24));
-}
+require_once 'utils.php';
 
 //Se definen todos los datos necesarios para conectarse con la base de datos
 $hostname = "db";
@@ -44,24 +42,19 @@ if(isset($_POST['Registrar'])) {
         $stmt = $conn->prepare("INSERT INTO usuarios(nombreAp, DNI, telf, fechaN, email, pass) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssisss",$nombreAp, $DNI, $telf, $fechaN, $email, $pass);
     
-       
-       
-    
-       /* ejecuta sentencias prepradas */
-       $stmt->execute();
-    
-    
-       /* cierra sentencia y conexión */
-       $stmt->close();
-    
-       /* cierra la conexión */
-       $conn->close();
+        /* ejecuta sentencias prepradas */
+        $stmt->execute();
+        
+        /* cierra sentencia y conexión */
+        $stmt->close();
+        
+        /* cierra la conexión */
+        $conn->close();
     
         header("Location:index.php");
         exit;
     }
 }
-
 
 //Se genera el formulario en el que el usuario define los datos a introducir y se define el archivo de javascript que realiza las comprobaciones de los campos
 echo "  
