@@ -1,11 +1,21 @@
 <?php
+ini_set('display_errors','off');
 //Se de restaura la sesion anterior
 session_start();
-if (!isset($_SESSION['token'])) {
-$_SESSION['token'] = bin2hex(random_bytes(24));
+public function getCSRFToken()
+{
+    if (empty($this->session[$this->sessionTokenLabel])) {
+        $this->session[$this->sessionTokenLabel] = bin2hex(openssl_random_pseudo_bytes(32));
+    }
+
+    if ($this->hmac_ip !== false) {
+        $token = $this->hMacWithIp($this->session[$this->sessionTokenLabel]);
+    } else {
+        $token = $this->session[$this->sessionTokenLabel];
+    }
+    return $token;
 }
-?>
-<?php
+
 //Se definen los datos necesarios para establecer conexion con la base de datos
 // phpinfo();
 $hostname = "db";
@@ -44,12 +54,12 @@ echo "
     <body class='bg'>
         <img src='images/AloBG.jpg' style='max-width: 100%; height: auto;'>
         <div class='boxCentradoSobreImagen'>
-            <form id='SignIn' method='post'>";?>
-            <html>
-                <input type='hidden' name='token' value="<?$_SESSION['token']?>"/>
-            </html>
-            <?php    
-                echo "
+            <form id='SignIn' method='post'>
+            <input type='hidden' name='token' value="; 
+        
+                $_SESSION['token'];
+                
+                echo ">
                 <h1>Sign In</h1>
                 <h2>E-mail</h2>
                         <input type='text' name='email' placeholder='ejemplo@servidor.extension' required>

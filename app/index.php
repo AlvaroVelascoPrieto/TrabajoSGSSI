@@ -1,13 +1,11 @@
 <?php
 session_set_cookie_params($httponly= true, $samesite='Strict');
+ini_set('display_errors','off');
 session_start();
 if (!isset($_SESSION['token'])) {
 $_SESSION['token'] = bin2hex(random_bytes(24));
 }
 ?>
-<html>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com https://upload.wikimedia.org; image-src https://upload.wikimedia.org https://www.youtube.com;">
-</html>
 <?php
 
   if(isset($_POST['EditarDatos'])){			//Se comprueba si se ha hecho click en editar datos para efectuar la redireccion

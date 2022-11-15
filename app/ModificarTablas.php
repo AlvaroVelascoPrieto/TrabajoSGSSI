@@ -1,8 +1,16 @@
 <?php
+ini_set('display_errors','off');
 session_start();
-if (!isset($_SESSION['token'])) {
-$_SESSION['token'] = bin2hex(random_bytes(24));
+require_once __DIR__ ./;
+
+use steveclifton\phpcsrftokens\Csrf;
+
+session_start();
+
+if (!empty($_GET['a'])) {
+	echo (Csrf::verifyToken('home') ? 'success' : 'unsuccessful');
 }
+
 //Se definen los datos para establecer conexion con base de datos
   $hostname = "db";
   $username = "admin";
@@ -45,7 +53,7 @@ $_SESSION['token'] = bin2hex(random_bytes(24));
     <body class='bg'>
         <img src='https://upload.wikimedia.org/wikipedia/commons/8/88/Lotus97T.jpg' style='width: 100%; height: auto;'>
         <div class='boxCentradoSobreImagen'>
-        	<form id='ModificarDatos' method='post'>
+        	<form id='ModificarDatos' method='post' sction>
         	<div class='formSeleccion'>
                 	<select name='Dato1'>";
                 
