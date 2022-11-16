@@ -20,16 +20,32 @@ $_SESSION['token'] = bin2hex(random_bytes(24));
   
   //SE comprueba si alguno de los botones de aplicar se ha presionado y se realiza el cambio correspondiente en la base de datos
    if(isset($_POST['AplicarVictorias'])){
-	$query2 = mysqli_query($conn, "UPDATE carros SET Victorias='$_POST[NVictorias]' WHERE Modelo='$_POST[Dato1]'") or die (mysqli_error($conn));
+   	$victorias = '$_POST[NVictorias]';
+   	$Dato1 = '$_POST[Dato1]';
+	$query2 = $conn -> prepare( "UPDATE carros SET Victorias=? WHERE Modelo=?") ;
+	$query2 -> bindParam('ss', $victorias , $dato1);
+        $query2 -> execute();
   }
   else if(isset($_POST['AplicarPoles'])){
-	$query3 = mysqli_query($conn, "UPDATE carros SET Pole_positions='$_POST[Poles]' WHERE Modelo='$_POST[Dato1]'") or die (mysqli_error($conn));
+        $poles = '$_POST[Poles]';
+   	$Dato1 = '$_POST[Dato1]';
+	$query3 = $conn -> prepare( "UPDATE carros SET Pole_positions=? WHERE Modelo=?") ;
+	$query3 -> bindParam('ss', $vistorias , $dato1);
+        $query3 -> execute();
   }
   else if(isset($_POST['AplicarPiloto'])){
-	$query4 = mysqli_query($conn, "UPDATE carros SET Primer_piloto='$_POST[piloto]' WHERE Modelo='$_POST[Dato1]'") or die (mysqli_error($conn));
+        $piloto = '$_POST[Piloto]';
+   	$Dato1 = '$_POST[Dato1]';
+	$query4 = $conn -> prepare( "UPDATE carros SET Primer_piloto=? WHERE Modelo=?") ;
+	$query4 -> bindParam('ss', $piloto , $dato1);
+        $query4 -> execute();
   }
   else if(isset($_POST['AplicarAnno'])){
-	$query5 = mysqli_query($conn, "UPDATE carros SET Anno='$_POST[Anno]' WHERE Modelo='$_POST[Dato1]'") or die (mysqli_error($conn));
+        $anno = '$_POST[Anno]';
+   	$Dato1 = '$_POST[Dato1]';
+	$query5 = $conn -> prepare( "UPDATE carros SET Anno=? WHERE Modelo=?") ;
+	$query5 -> bindParam('ss', $anno , $dato1);
+        $query5 -> execute();
   }
   
   if ($_POST["token"] == $_SESSION["token"]) {

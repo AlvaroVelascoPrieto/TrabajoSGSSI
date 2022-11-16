@@ -24,10 +24,12 @@ if(isset($_POST['Registrar'])) {
 
     $user = $_POST['email'];
     $pass = $_POST['pw'];
- 
-    $emailQuery = mysqli_query($conn, "SELECT * FROM `usuarios` WHERE email = '$_POST[email]'")
-    or die (mysqli_error($conn));
-    if (mysqli_num_rows($emailQuery) > 0) {
+    
+    $stmt = $conn -> prepare("SELECT * FROM `usuarios` WHERE email = ?");
+    $stmt -> bind_param('s', $user);
+    $stmt -> execute();
+    $result = $stmt->get_result();
+    if (mysqli_num_rows($result) > 0) {
 
         echo "<script> alert('El email que ha introducido ya está registrado'); </script>";
 
@@ -36,16 +38,17 @@ if(isset($_POST['Registrar'])) {
     $_SESSION['user'] = $user;
     $_SESSION['pass'] = $pass;
     
-
-    $query = mysqli_query($conn, "INSERT INTO 
-    usuarios(nombreAp, DNI, telf, fechaN, email, pass)
-    VALUES('$_POST[NombreAp]', 
-        '$_POST[DNI]', 
-        '$_POST[telefono]', 
-        '$_POST[fechaN]', 
-        '$user',
-        '$pass')")
-    or die (mysqli_error($conn));
+    $nombreAp = $_POST['NombreAp'];
+    $DNI = $_POST['DNI'];
+    $telf = $_POST['relefono'];
+    $fechaN = $_POST['fechaN'];
+    $email = $user;
+        
+    $stmt = $conn -> prepare("INSERT INTO usuarios(nombreAp, DNI, telf, fechaN, email, pass) VALUES (?,?,?,?,?,?)");
+    $stmt ->bind_param('ssisss', $nomrbeAp, $DNI, $telf, $fechaN, $email, $pass);	
+    $stmt -> execute();
+    ###or die (mysqli_error($conn));
+    
     header("Location:index.php");
     exit;
 
