@@ -26,45 +26,27 @@ $email = $_SESSION['user']; //Se define el email del usuario que ha iniciado ses
       $query2 -> execute();
   }
   else if(isset($_POST['AplicarDNI'])){
-      $DNI = '$_POST[DNI]';
-      $query3 = $conn -> prepare("UPDATE usuarios SET DNI=? WHERE email=?");
-      $query3 -> bindParam('ss', $DNI, $email);
-      $query3 -> execute();
+	$query3 = mysqli_query($conn, "UPDATE usuarios SET DNI='$_POST[DNI]' WHERE email='$email'") or die (mysqli_error($conn));
   }
   else if(isset($_POST['AplicarTelefono'])){
-      $telf = '$_POST[telf]';
-      $query4 = $conn -> prepare("UPDATE usuarios SET telf=$telf WHERE email = ?");
-      $query4 -> bindParam('ss', $telf, $email);
-      $query4 -> execute();
+	$query4 = mysqli_query($conn, "UPDATE usuarios SET telf='$_POST[telefono]' WHERE email='$email'") or die (mysqli_error($conn));
   }
   else if(isset($_POST['AplicarFechaNac'])){
-      $fechaN = '$_POST[fechaN]';
-      $query5 = $conn -> prepare("UPDATE usuarios SET fechaN = ? WHERE email = ? ");
-      $query5 -> bindParam('ss', $fechaN, $email);
-      $query5 -> execute();
+	$query5 = mysqli_query($conn, "UPDATE usuarios SET fechaN='$_POST[fechaN]' WHERE email='$email'") or die (mysqli_error($conn));
   }
   else if(isset($_POST['AplicarEMail'])){ //En esta opcion se checkea que el email introducido no se encuentreregistrado en la base de datos
-  	$stmt = $conn -> prepare("SELECT pass FROM usuarios WHERE email = ?");
-        $stmt -> bind_param('s', $dato1);
-        $stmt -> execute();
-        $result = $stmt->get_result();
-        $contra = mysqli_fetch_array($result);
-    	if (mysqli_num_rows($contra) > 0) {
+  	$emailQuery = mysqli_query($conn, "SELECT * FROM `usuarios` WHERE email = '$_POST[email]'")
+    or die (mysqli_error($conn));
+    	if (mysqli_num_rows($emailQuery) > 0) {
     	    echo "<script> alert('El email que ha introducido ya está registrado'); </script>";
     	}else{
-	$query6 = $conn -> prepare("UPDATE usuarios SET email=? WHERE email=?") or die (mysqli_error($conn));
-	$query6 = bindParam('ss', $email, $email);
-        $query6 = execute();
+	$query6 = mysqli_query($conn, "UPDATE usuarios SET email='$_POST[email]' WHERE email='$email'") or die (mysqli_error($conn));
 	$_SESSION['user'] = $_POST['email'];
 	$email = $_SESSION['email'];
 	}
   }
   else if(isset($_POST['AplicarContra'])){
-  	$pw = '$_POST[pw]';
-	$query7 = $conn -> prepare("UPDATE usuarios SET pass=? WHERE email=?");
-	$query7 -> bindParam('ss', $py, $email);
-        $query7 -> execute();
-	
+	$query7 = mysqli_query($conn, "UPDATE usuarios SET pass='$_POST[pw]' WHERE email='$email'") or die (mysqli_error($conn));
   }
 //Se crea el formulario para editar las tablas
   echo "  
