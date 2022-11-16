@@ -40,12 +40,12 @@ if(isset($_POST['Registrar'])) {
     
     $nombreAp = $_POST['NombreAp'];
     $DNI = $_POST['DNI'];
-    $telf = $_POST['relefono'];
+    $telf = $_POST['telefono'];
     $fechaN = $_POST['fechaN'];
     $email = $user;
         
     $stmt = $conn -> prepare("INSERT INTO usuarios(nombreAp, DNI, telf, fechaN, email, pass) VALUES (?,?,?,?,?,?)");
-    $stmt ->bind_param('ssisss', $nomrbeAp, $DNI, $telf, $fechaN, $email, $pass);	
+    $stmt ->bind_param('ssisss', $nombreAp, $DNI, $telf, $fechaN, $email, $pass);	
     $stmt -> execute();
     ###or die (mysqli_error($conn));
     
