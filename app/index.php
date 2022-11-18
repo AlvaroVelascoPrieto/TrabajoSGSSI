@@ -1,10 +1,10 @@
 <?php
 ini_set('display_errors','off');
+ini_set('session.cookie_secure', 1);
+ini_set('session.cookie_domain','localhost:81');
 session_set_cookie_params($httponly= true, $samesite='Strict');
 session_start();
 require_once 'utils.php';
-
-
 
 $token = createToken();
 

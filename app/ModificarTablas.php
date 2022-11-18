@@ -1,42 +1,72 @@
 <?php
 ini_set('display_errors','off');
+ini_set('session.cookie_secure', 1);
+ini_set('session.cookie_domain','localhost:81');
 session_set_cookie_params($httponly= true, $samesite='Strict');
 session_start();
 require_once 'utils.php';
 
 //Se definen los datos para establecer conexion con base de datos
-  $hostname = "db";
-  $username = "admin";
-  $password = "test";
-  $db = "database";
+$hostname = "db";
+$username = "admin";
+$password = "test";
+$db = "database";
 
 //Se establece conexion con la basede datos
-  $conn = mysqli_connect($hostname,$username,$password,$db);
-  if ($conn->connect_error) {
-    die("Database connection failed: " . $conn->connect_error);
-  }
+$conn = mysqli_connect($hostname,$username,$password,$db);
+if ($conn->connect_error) {
+	die("Database connection failed: " . $conn->connect_error);
+}
   
-  //Se define la query para poblar el desplegable de modelos de coches a editar
-  $query = mysqli_query($conn, "SELECT Modelo FROM carros") or die (mysqli_error($conn));
+//Se define la query para poblar el desplegable de modelos de coches a editar
+$query = mysqli_query($conn, "SELECT Modelo FROM carros") or die (mysqli_error($conn));
+$dato1 = $_POST['Dato1'];
   
-  //SE comprueba si alguno de los botones de aplicar se ha presionado y se realiza el cambio correspondiente en la base de datos
-   if(isset($_POST['AplicarVictorias'])){
-	$query2 = mysqli_query($conn, "UPDATE carros SET Victorias='$_POST[NVictorias]' WHERE Modelo='$_POST[Dato1]'") or die (mysqli_error($conn));
-  }
-  else if(isset($_POST['AplicarPoles'])){
-	$query3 = mysqli_query($conn, "UPDATE carros SET Pole_positions='$_POST[Poles]' WHERE Modelo='$_POST[Dato1]'") or die (mysqli_error($conn));
-  }
-  else if(isset($_POST['AplicarPiloto'])){
-	$query4 = mysqli_query($conn, "UPDATE carros SET Primer_piloto='$_POST[piloto]' WHERE Modelo='$_POST[Dato1]'") or die (mysqli_error($conn));
-  }
-  else if(isset($_POST['AplicarAnno'])){
-	$query5 = mysqli_query($conn, "UPDATE carros SET Anno='$_POST[Anno]' WHERE Modelo='$_POST[Dato1]'") or die (mysqli_error($conn));
-  }
+//SE comprueba si alguno de los botones de aplicar se ha presionado y se realiza el cambio correspondiente en la base de datos
+if(isset($_POST['AplicarVictorias'])){
+	$victorias = $_POST['NVictorias'];
+	
+ 	$stmt = $conn -> prepare("UPDATE carros SET Victorias=? WHERE Modelo=?") ;
+	if ($stmt === false) {
+		trigger_error($this->mysqli->error, E_USER_ERROR);
+	}
+ 	$stmt -> bind_param('is', $victorias , $dato1);
+	$status = $stmt -> execute();
+	echo $status;
+	if ($status === false) {
+		trigger_error($stmt->error, E_USER_ERROR);
+	}
+	$stmt -> close();
+}
+else if(isset($_POST['AplicarPoles'])){
+	$poles = $_POST['Poles'];
+	$stmt = $conn -> prepare( "UPDATE carros SET Pole_positions=? WHERE Modelo=?") ;
+	$stmt -> bind_param('is', $poles , $dato1);
+    $status = $stmt -> execute();
+	
+	$stmt -> close();
+}
+else if(isset($_POST['AplicarPiloto'])){
+	$piloto = $_POST['Piloto'];
+   	
+	$stmt = $conn -> prepare( "UPDATE carros SET Primer_piloto=? WHERE Modelo=?") ;
+	$stmt -> bind_Param('ss', $piloto , $dato1);
+    $stmt -> execute();
+	$stmt -> close();
+}
+else if(isset($_POST['AplicarAnno'])){
+	$anno = $_POST['Anno'];
+   	
+	$stmt = $conn -> prepare( "UPDATE carros SET Anno=? WHERE Modelo=?") ;
+	$stmt -> bind_Param('ss', $anno , $dato1);
+    $stmt -> execute();	
+	$stmt -> close();
+}
 
   //SE genera el formulario para editar los datos y en el bucle se rellena el desplegable con los datos de los coches de la base de datos
   echo "  
 <head>
-    <title>Sing Up</title>
+    <title>Modificar datos</title>
     <link rel='stylesheet' href='styles/styles.css'>
     <link rel='icon' href='images/F1Sprite.png'>
 

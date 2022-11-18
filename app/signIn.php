@@ -1,5 +1,7 @@
 <?php
 ini_set('display_errors','off');
+ini_set('session.cookie_secure', 1);
+ini_set('session.cookie_domain','localhost:81');
 session_set_cookie_params($httponly= true, $samesite='Strict');
 session_start();
 require_once 'utils.php';
@@ -22,10 +24,14 @@ if ($conn->connect_error) {
 //Se comprueba si se ha pulsado en iniciar sesion y se comprueba que la contraseña introducida coincida con la que el usuario tiene en la base de datos
 if(isset($_POST['IniciarSesion'])) {
     if (validateToken($_POST['csrf_token'])) {
-        $dato1= $_POST['email'];
-        $query = mysqli_query($conn, "SELECT pass FROM usuarios WHERE email = '$_POST[email]';")
-        or die (mysqli_error($conn));
-        $contra = mysqli_fetch_array($query);
+        $email = $_POST['email'];
+    
+        $stmt = $conn -> prepare("SELECT pass FROM usuarios WHERE email = ?");
+        $stmt -> bind_param('s', $email);
+        $stmt -> execute();
+        $result = $stmt->get_result();
+        $contra = mysqli_fetch_array($result);
+
         if(strcmp($contra[0],$_POST['password'])==0){
             $_SESSION['user'] = $dato1;
             $_SESSION['pw'] = $_POST['password'];
