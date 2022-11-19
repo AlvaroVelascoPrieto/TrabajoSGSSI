@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors','off');
+//ini_set('display_errors','off');
 ini_set('session.cookie_secure', 1);
 ini_set('session.cookie_domain','localhost:81');
 session_set_cookie_params($httponly= true, $samesite='Strict');
@@ -32,10 +32,11 @@ if(isset($_POST['IniciarSesion'])) {
         $result = $stmt->get_result();
         $contra = mysqli_fetch_array($result);
 
-        if(strcmp($contra[0],$_POST['password'])==0){
-            $_SESSION['user'] = $dato1;
-            $_SESSION['pw'] = $_POST['password'];
-    //Se redirecciona al usuario a la pagina principal
+        if(password_verify($_POST['password'], $contra[0])) {
+       
+            $_SESSION['user'] = $email;
+        
+            //Se redirecciona al usuario a la pagina principal
             header("Location:index.php");
             exit;
         }

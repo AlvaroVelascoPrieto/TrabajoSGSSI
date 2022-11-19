@@ -56,7 +56,7 @@ CREATE TABLE `usuarios` (
   `telf` int(11) DEFAULT NULL,
   `fechaN` date DEFAULT NULL,
   `email` varchar(30) NOT NULL,
-  `pass` varchar(30) DEFAULT NULL,
+  `pass` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;

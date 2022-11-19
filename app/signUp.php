@@ -25,7 +25,7 @@ if(isset($_POST['Registrar'])) {
     if(validateToken($_POST['csrf_token'])) {
 
         $user = $_POST['email'];
-        $pass = $_POST['pw'];
+        $pass = password_hash($_POST['pw'], PASSWORD_DEFAULT);
     
         $emailQuery = mysqli_query($conn, "SELECT * FROM `usuarios` WHERE email = '$_POST[email]'")
         or die (mysqli_error($conn));

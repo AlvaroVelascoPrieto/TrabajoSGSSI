@@ -47,7 +47,7 @@ $query3 = mysqli_query($conn, "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`C
    or die (mysqli_error($conn));
    
 //If para comprobar si hay una sesión iniciada, que cambiaría el HTML de la página
-if(!isset($_SESSION['user']) and !isset($_SESSION['pw'])) {
+if(!isset($_SESSION['user'])) {
     echo "<body>
         <nav>
         <ul class='topnav' id='dropdownClick'>
