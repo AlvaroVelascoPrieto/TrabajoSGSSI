@@ -2,8 +2,8 @@
 ## Trabajo SGSSI
 Linux + Apache + MariaDB (MySQL) + PHP 7.2 on Docker Compose. Mod_rewrite enabled by default.
 
-Alberto Aróstegui García
-Alvaro Velasco Prieto
+Alberto Aróstegui García,
+Alvaro Velasco Prieto,
 David Elorza Gabilondo
 
 ## Requisitos
