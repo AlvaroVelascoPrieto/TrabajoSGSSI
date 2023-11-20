@@ -1,10 +1,4 @@
 <html>
-<?php
-    if(session_status() == 0) {
-        session_start();
-    }
-    
-?>
 
 <head>
     <title>HyperLAND</title>
